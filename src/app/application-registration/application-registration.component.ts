@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
+  import moment from 'moment';
 
 @Component({
   selector: 'app-application-registration',
@@ -7,5 +9,9 @@ import { Component } from '@angular/core';
   styleUrl: './application-registration.component.css'
 })
 export class ApplicationRegistrationComponent {
+   date: Date = new Date();
+  searchPageDate: string =moment(this.date).format('MMMM DD YYYY hh:mm A');
+  private router = inject(Router);
+
 
 }
