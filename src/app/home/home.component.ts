@@ -1,16 +1,15 @@
 import { Component, inject } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { Router } from '@angular/router';
   import moment from 'moment';
+  
 
 @Component({
-  selector: 'app-root',
-  imports: [ RouterOutlet ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  selector: 'app-home',
+  imports: [ ],
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css'
 })
-export class AppComponent {
-  title = 'Integrated Eligibility System';
+export class HomeComponent {
    date: Date = new Date();
   searchPageDate: string =moment(this.date).format('MMMM DD YYYY hh:mm A');
   private router = inject(Router);
@@ -20,5 +19,4 @@ export class AppComponent {
       replaceUrl: true,
     });
   }
- 
 }
