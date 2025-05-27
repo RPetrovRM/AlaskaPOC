@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+  import moment from 'moment';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +9,7 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'IntegratedEligibilitySystem';
+  title = 'Integrated Eligibility System';
+  date: Date = new Date();
+  searchPageDate: string =moment(this.date).format('MMMM DD YYYY hh:mm A');
 }
