@@ -41,12 +41,14 @@
             <div class="label">{{ searchPageDate }}</div>
             <div class="label1">Search Person</div>
             <div class="label2">OR</div>
+            <form #form="ngForm" class="form" (ngSubmit)="onSubmit(form)">
             <div class="inputFieldLarge">
                 <div class="inputFieldBase">
-                    <div class="inputWithLabel">
+                    <div class="inputWithLabel form-group">
                         <div class="label3">Application Number</div>
                         <div class="input">
-                            <div class="content" > </div>
+                            <input for="applicationNumber" class="noBorderInputs" type="text" id="applicationNumber" name="applicationNumber" ngModel />
+                          
                         </div>
                     </div>
                 </div>
@@ -55,8 +57,8 @@
                 <div class="inputFieldBase">
                     <div class="inputWithLabel">
                         <div class="label3">First Name</div>
-                        <div class="input" type="text">
-                            <div class="content"> </div>
+                        <div class="input">
+                           <input for="firstName" class="noBorderInputs" type="text" id="firstName" name="firstName" ngModel />
                         </div>
                     </div>
                 </div>
@@ -66,7 +68,7 @@
                     <div class="inputWithLabel">
                         <div class="label3">Last Name</div>
                         <div class="input">
-                            <div class="content" > </div>
+                        <input for="lastName" class="noBorderInputs" type="text" id="lastName" name="lastName" ngModel />
                         </div>
                     </div>
                 </div>
@@ -76,20 +78,23 @@
                     <div class="inputWithLabel">
                         <div class="label3">Middle Name</div>
                         <div class="input">
-                            <div class="content" > </div>
+                           <input for="middleName" class="noBorderInputs" type="text" id="middleName" name="middleName" ngModel />
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="appReg2Child"></div>>
+            <div class="appReg2Child"></div>
             <div class="appReg2Item" ></div>
             <div class="button">
-                <div class="buttonBase">
-                    <div class="text" (click)="sendToRegisterApplication()">Search</div>
-                </div>
+                <!-- <div class="buttonBase"> -->
+                    <!-- <div class="text" >Search</div> -->
+                     <button type="submit" class="buttonBase"><span style="color: white;">Search</span></button>
+                <!-- </div> -->
             </div>
             <div class="button1">
-                <div class="buttonBase1">
-                    <div class="text">Back</div>
-                </div>
-</div>
+                <!-- <div class="buttonBase1"> -->
+                    <!-- <div class="text">Back</div> -->
+                    <button type="button" class="buttonBase1" (click)="goBack()"><span style="color: black;">Back</span></button>
+                <!-- </div> -->
+          </div>
+</form>
