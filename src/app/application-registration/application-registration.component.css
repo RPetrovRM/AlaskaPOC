@@ -497,7 +497,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 10px 18px;
+    padding: 14px 18px;
 }
 
 .button {
@@ -527,7 +527,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 10px 18px;
+    padding: 14px 18px;
 }
 
 .button1 {
@@ -553,4 +553,8 @@
     font-size: 14px;
     color: #181d27;
     font-family: Inter;
+}
+.noBorderInputs {
+    width: 300px;
+    border: none  
 }
