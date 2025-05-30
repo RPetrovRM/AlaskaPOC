@@ -13,5 +13,10 @@ export class ApplicationRegistrationComponent {
   searchPageDate: string =moment(this.date).format('MMMM DD YYYY hh:mm A');
   private router = inject(Router);
 
+  sendToRegisterApplication() {
+    this.router.navigate(['/app-ra-applicant-details'], {
+      replaceUrl: true,
+    });
+  }
 
 }
