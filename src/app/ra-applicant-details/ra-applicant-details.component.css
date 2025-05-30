@@ -156,15 +156,6 @@
     height: 28px;
 }
 
-.automatedRenewal {
-    position: absolute;
-    top: 260px;
-    left: 49px;
-    display: flex;
-    align-items: center;
-    width: 163px;
-    height: 29px;
-}
 .unifiedSearch {
     position: absolute;
     top: 230px;
@@ -337,39 +328,6 @@
 }
 
 .label {
-    position: absolute;
-    top: 96px;
-    left: 1232px;
-    text-align: right;
-    display: inline-block;
-    width: 232px;
-    height: 19px;
-}
-
-.label1 {
-    position: absolute;
-    top: 87px;
-    left: 290px;
-    font-size: 24px;
-    line-height: 20px;
-    font-weight: 500;
-    display: inline-block;
-    width: 232px;
-    height: 19px;
-}
-
-.label2 {
-    position: absolute;
-    top: 231px;
-    left: 400px;
-    font-size: 16px;
-    font-weight: 500;
-    display: inline-block;
-    width: 29px;
-    height: 20px;
-}
-
-.label3 {
     position: relative;
     line-height: 20px;
     font-weight: 500;
@@ -380,8 +338,10 @@
     height: 24px;
 }
 
-.main2{
-   padding: 0px 20px;
+.icon {
+    width: 12px;
+    position: relative;
+    height: 6px;
 }
 
 .input {
@@ -399,6 +359,7 @@
     align-items: center;
     justify-content: flex-start;
     padding: 10px 14px;
+    gap: 8px;
 }
 
 .inputWithLabel {
@@ -418,71 +379,252 @@
     justify-content: flex-start;
 }
 
-.inputFieldLarge {
+.main {
     position: absolute;
-    top: 151px;
-    left: 290px;
-    width: 557px;
+    top: 333px;
+    left: 281px;
+    width: 297px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
 }
 
-.inputFieldLarge1 {
+.main1 {
     position: absolute;
-    top: 282px;
-    left: 290px;
-    width: 557px;
+    top: 417px;
+    left: 281px;
+    width: 297px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
 }
 
-.inputFieldLarge2 {
+.vectorIcon1 {
     position: absolute;
-    top: 360px;
-    left: 290px;
-    width: 557px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+    height: 81.25%;
+    width: 75%;
+    top: 6.25%;
+    right: 12.5%;
+    bottom: 12.5%;
+    left: 12.5%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
 }
 
-.inputFieldLarge3 {
-    position: absolute;
-    top: 282px;
-    left: 907px;
-    width: 557px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-}
-
-.appReg2Child {
-    position: absolute;
-    top: 240.5px;
-    left: 428.5px;
-    border-top: 1px solid #c2c2c2;
-    box-sizing: border-box;
-    width: 537px;
-    height: 1px;
-}
-
-.appReg2Item {
-    position: absolute;
-    top: 240.5px;
-    left: 289.5px;
-    border-top: 1px solid #c2c2c2;
-    box-sizing: border-box;
-    width: 100px;
-    height: 1px;
+.calendardots {
+    width: 24px;
+    position: relative;
+    height: 24px;
 }
 
 .text {
+    width: 269px;
+    position: relative;
+    line-height: 24px;
+    display: none;
+    flex-shrink: 0;
+}
+
+.content2 {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+}
+
+.helpIcon {
+    width: 16px;
+    position: relative;
+    height: 16px;
+    display: none;
+}
+
+.input2 {
+    align-self: stretch;
+    box-shadow: 0px 1px 2px rgba(10, 13, 18, 0.05);
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #c2c2c2;
+    box-sizing: border-box;
+    height: 36px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 14px 10px 12px;
+    gap: 8px;
+    font-size: 16px;
+}
+
+.hintText {
+    width: 320px;
+    position: relative;
+    line-height: 20px;
+    color: #535862;
+    display: none;
+}
+
+.main2 {
+    position: absolute;
+    top: 249px;
+    left: 281px;
+    width: 297px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.label3 {
+    position: absolute;
+    top: 31px;
+    left: 40px;
+    line-height: 20px;
+    font-weight: 500;
+    display: inline-block;
+    width: 276px;
+    height: 19px;
+}
+
+.applicantDetails {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 122.9px;
+    height: 25px;
+}
+
+.topLevelTabs1 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 122.9px;
+    height: 25px;
+    color: #00367d;
+}
+
+.primaryIndividual {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 154px;
+    height: 25px;
+}
+
+.topLevelTabs2 {
+    position: absolute;
+    top: 0px;
+    left: 141px;
+    width: 154px;
+    height: 25px;
+}
+
+.contact {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 167.4px;
+    height: 25px;
+}
+
+.topLevelTabs3 {
+    position: absolute;
+    top: 0px;
+    left: 271.87px;
+    width: 167.4px;
+    height: 25px;
+}
+
+.topLevelTabs4 {
+    position: absolute;
+    top: 0px;
+    left: 431.24px;
+    width: 167.4px;
+    height: 25px;
+}
+
+.topLevelTabs5 {
+    position: absolute;
+    top: 0px;
+    left: 598.62px;
+    width: 167.4px;
+    height: 25px;
+}
+
+.topNavigation {
+    position: absolute;
+    top: 84px;
+    left: 40px;
+    width: 766px;
+    height: 25px;
+    text-align: center;
+    font-size: 15px;
+    color: #181d27;
+}
+
+.cardChild {
+    position: absolute;
+    top: 108px;
+    left: 39px;
+    border-top: 2px solid #00367d;
+    box-sizing: border-box;
+    width: 125px;
+    height: 2px;
+}
+
+.label4 {
+    position: absolute;
+    top: 84px;
+    left: 971px;
+    font-size: 14px;
+    text-align: right;
+    display: inline-block;
+    width: 276px;
+    height: 19px;
+}
+
+.card {
+    position: absolute;
+    top: 45px;
+    left: 241px;
+    box-shadow: 4px 4px 5px 1px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    width: 1273px;
+    height: 109px;
+    overflow: hidden;
+    font-size: 24px;
+    color: #414651;
+}
+
+.home1 {
+    position: absolute;
+    top: 184px;
+    left: 281px;
+    font-size: 24px;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.text1 {
     position: relative;
     line-height: 24px;
     font-weight: 600;
@@ -547,7 +689,7 @@
     font-size: 16px;
 }
 
-.appReg2 {
+.appReg3 {
     width: 100%;
     position: relative;
     background-color: #f4f4f4;
@@ -558,4 +700,3 @@
     color: #181d27;
     font-family: Inter;
 }
-
