@@ -155,6 +155,15 @@
     width: 192px;
     height: 28px;
 }
+.automatedRenewal {
+    position: absolute;
+    top: 260px;
+    left: 49px;
+    display: flex;
+    align-items: center;
+    width: 163px;
+    height: 29px;
+}
 
 .unifiedSearch {
     position: absolute;
@@ -612,7 +621,7 @@
     height: 109px;
     overflow: hidden;
     font-size: 24px;
-    color: #414651;
+    color: #08328e;
 }
 
 .home1 {
@@ -699,4 +708,9 @@
     font-size: 14px;
     color: #181d27;
     font-family: Inter;
+}
+
+.noBorderInputs {
+    width: 300px;
+    border: none  
 }

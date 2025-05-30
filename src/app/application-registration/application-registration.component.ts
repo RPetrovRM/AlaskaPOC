@@ -21,9 +21,10 @@ export class ApplicationRegistrationComponent {
   onSubmit(form: NgForm) {
     // Handle form submission logic here
     console.log(form.value);
-    this.router.navigate(['/'], {
-      replaceUrl: true,
-    });
+    // this.router.navigate(['/'], {
+    //   replaceUrl: true,
+    // });
+    this.sendToRegisterApplication();
   }
 
   goBack() {

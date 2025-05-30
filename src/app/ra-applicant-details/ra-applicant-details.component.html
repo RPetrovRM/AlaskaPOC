@@ -37,45 +37,7 @@
         <img class="eligibilityDeterminationIcon" alt="" src="Eligibility Determination.png" />
         <img class="vectorIcon" alt="" src="Vector.png" />
     </div>
-    <div class="main">
-        <div class="inputFieldBase">
-            <div class="inputWithLabel">
-                <div class="label">Application Type</div>
-                <div class="input">
-                    <div class="content"></div>
-                    <img class="icon" alt="" src="/Icon.png" />
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="main1">
-        <div class="inputFieldBase">
-            <div class="inputWithLabel">
-                <div class="label">Program Type</div>
-                <div class="input">
-                    <div class="content"></div>
-                    <img class="icon" alt="" src="/Icon.png" />
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="main2">
-        <div class="inputWithLabel">
-            <div class="inputWithLabel">
-                <div class="label">Application Date</div>
-                <div class="input2">
-                    <div class="content2">
-                        <div class="calendardots">
-                            <img class="vectorIcon1" alt="" src="Vector.png" />
-                        </div>
-                        <div class="text">Sydney&#64;email.com</div>
-                    </div>
-                    <div class="helpIcon"></div>
-                </div>
-            </div>
-            <div class="hintText">This is a hint text to help user.</div>
-        </div>
-    </div>
+    
     <div class="card">
         <div class="label3">Register Application</div>
         <div class="topNavigation">
@@ -96,17 +58,62 @@
             </div>
         </div>
         <div class="cardChild"></div>
-        <div class="label4">May 20, 2025 3:56 PM</div>
+        <div class="label4">{{ searchPageDate }}</div>
     </div>
     <div class="home1">Applicant Details</div>
     <div class="button">
-        <div class="buttonBase">
-            <div class="text1">Next</div>
-        </div>
+        <!-- <div class="buttonBase">
+            <div class="text1">Next</div>            
+        </div> -->
+          <button type="submit" class="buttonBase"><span style="color: white;">Next</span></button>
     </div>
     <div class="button1">
-        <div class="buttonBase1">
+        <!-- <div class="buttonBase1">
             <div class="text1">Close</div>
+        </div> -->
+         <button type="button" class="buttonBase1" ><span style="color: black;">Close</span></button>
+    </div>
+
+    
+    <mat-stepper linear #stepper>
+        <mat-step [stepControl]="appDetailsGroup" >
+            <form [formGroup]="appDetailsGroup">               
+               
+    <div class="main">
+        <div class="inputFieldBase">
+            <div class="inputWithLabel">
+                <div class="label">Application Type</div>
+                <div class="input">
+                    <!-- <div class="content"></div> -->
+                      <input for="applicationType" class="noBorderInputs" type="text" id="applicationType" name="applicationType" formControlName="applicationType" />
+                    <img class="icon" alt="" src="/Icon.png" />
+                </div>
+            </div>
         </div>
     </div>
-</div>
+    <div class="main1">        
+        <div class="inputFieldBase">
+            <div class="inputWithLabel">
+                <div class="label">Program Type</div>
+                <div class="input">
+                    <!-- <div class="content"></div> -->
+                      <input for="programType" class="noBorderInputs" type="text" id="programType" name="programType" formControlName="programType" />
+                    <img class="icon" alt="" src="/Icon.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main2">
+        <div class="inputWithLabel">
+            <div class="inputWithLabel">
+                <div class="label">Application Date</div>
+                <div class="input2">
+                  <input for="applicationDate" class="noBorderInputs" type="date" id="applicationDate" name="applicationDate" formControlName="applicationDate" />
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</form>
+</mat-step>
+
