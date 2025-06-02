@@ -35,4 +35,16 @@ export class RaApplicantDetailsComponent {
       replaceUrl: true,
     });
   }
+   onSubmit(form: NgForm) {
+    // Handle form submission logic her
+    console.log(form.value);
+   
+    
+  }
+
+  goBack() {
+    this.router.navigate(['/'], {
+      replaceUrl: true,
+    });
+  }
 }

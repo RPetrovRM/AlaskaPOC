@@ -558,3 +558,7 @@
     width: 300px;
     border: none  
 }
+
+.decreaseWidth {
+    width: 140px;
+}
