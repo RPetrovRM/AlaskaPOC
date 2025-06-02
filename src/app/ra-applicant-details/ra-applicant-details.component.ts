@@ -5,14 +5,16 @@ import moment from 'moment';
 import {ErrorStateMatcher, MatOptionModule} from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatStepperModule} from '@angular/material/stepper';
+import {MatStepperModule, MatStepperNext} from '@angular/material/stepper';
 import { race } from 'rxjs';
 import { MatSelectModule } from '@angular/material/select';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
+import { text } from 'stream/consumers';
 
 @Component({
   selector: 'app-ra-applicant-details',
-  imports: [ ReactiveFormsModule, FormsModule, MatInputModule, MatFormFieldModule, MatStepperModule, MatSelectModule, MatOptionModule, CommonModule ],
+  imports: [ ReactiveFormsModule, FormsModule, MatInputModule, MatFormFieldModule,
+     MatStepperModule, MatSelectModule, MatOptionModule, CommonModule, NgClass ],
   standalone: true,
   templateUrl: './ra-applicant-details.component.html',
   styleUrl: './ra-applicant-details.component.css'
@@ -22,23 +24,36 @@ export class RaApplicantDetailsComponent {
   date: Date = new Date();
     searchPageDate: string =moment(this.date).format('MMMM DD YYYY hh:mm A');    
   private _formBuilder = inject(FormBuilder);
+  primaryClicked: boolean = false;
+
+  selectedStep= {    
+    'color': '#00367d',
+    'textDecoration': 'underline',
+  };
+  notSelected = {
+    'color': 'white',  
+    'textDecoration': 'none'}
   
   appDetailsGroup= this._formBuilder.group({ 
     applicationType: [''],
     programType: [''],
-    applicationDate: [''],
-   // clientId: ['', [/* Validators.required */, Validators.pattern(/^\d+$/)]],
-   
+    applicationDate: ['']   
   });
-  continueToPrimaryIndividualSection(){
-    this.router.navigate(['/app-ra-primary-individual'], {
-      replaceUrl: true,
-    });
-  }
+
+   primaryIndividualGroup= this._formBuilder.group({ 
+    firstName: [''],
+    lastName: [''],
+    middleName: [''],
+    title: [''],
+    gender: [''],    
+    suffix: [''],
+    dateOfBirth: [''],
+    lastNameAtBirth: [''],    
+  });
+ 
    onSubmit(form: NgForm) {
     // Handle form submission logic her
-    console.log(form.value);
-   
+    console.log(form.value);   
     
   }
 
@@ -47,4 +62,8 @@ export class RaApplicantDetailsComponent {
       replaceUrl: true,
     });
   }
+  primarySelect() {
+    this.primaryClicked = true;
+  }
+  
 }

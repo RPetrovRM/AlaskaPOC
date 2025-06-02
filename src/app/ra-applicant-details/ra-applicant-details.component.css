@@ -698,7 +698,7 @@
     font-size: 16px;
 }
 
-.appReg3 {
+.appReg {
     width: 100%;
     position: relative;
     background-color: #f4f4f4;
@@ -713,4 +713,216 @@
 .noBorderInputs {
     width: 300px;
     border: none  
+}
+
+
+.buttonBase2 {
+    width: 130px;
+    box-shadow: 0px 1px 2px rgba(10, 13, 18, 0.05);
+    border-radius: 8px;
+    background-color: #00367d;
+    border: 1px solid #00367d;
+    box-sizing: border-box;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+}
+
+.button2 {
+    position: absolute;
+    top: 902px;
+    left: 1327px;
+    border-radius: 8px;
+    width: 121px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: 16px;
+    color: #fff;
+}
+
+.buttonBase3 {
+    width: 130px;
+    box-shadow: 0px 1px 2px rgba(10, 13, 18, 0.05);
+    border-radius: 8px;
+    background-color: #c2c2c2;
+    border: 1px solid #c2c2c2;
+    box-sizing: border-box;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+}
+
+.button3 {
+    position: absolute;
+    top: 902px;
+    left: 1181px;
+    border-radius: 8px;
+    width: 120px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: 16px;
+}
+
+
+
+.input2 {
+    align-self: stretch;
+    box-shadow: 0px 1px 2px rgba(10, 13, 18, 0.05);
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #c2c2c2;
+    box-sizing: border-box;
+    height: 36px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 14px;
+    gap: 8px;
+}
+
+
+.inputFieldLarge {
+    position: absolute;
+    top: 234px;
+    left: 281px;
+    width: 557px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.inputFieldLarge1 {
+    position: absolute;
+    top: 312px;
+    left: 281px;
+    width: 557px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+
+.inputFieldLarge2 {
+    position: absolute;
+    top: 232px;
+    left: 898px;
+    width: 557px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.inputFieldLarge3 {
+    position: absolute;
+    top: 310px;
+    left: 898px;
+    width: 557px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.inputFieldLarge4 {
+    position: absolute;
+    top: 388px;
+    left: 898px;
+    width: 557px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.inputFieldLarge5 {
+    position: absolute;
+    top: 466px;
+    left: 898px;
+    width: 557px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+
+.calendardots {
+    width: 24px;
+    position: relative;
+    height: 24px;
+}
+
+.content6 {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.input6 {
+    align-self: stretch;
+    box-shadow: 0px 1px 2px rgba(10, 13, 18, 0.05);
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #c2c2c2;
+    box-sizing: border-box;
+    height: 36px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 14px 10px 12px;
+}
+
+.inputFieldBase6 {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+
+
+.main3 {
+    position: absolute;
+    top: 466px;
+    left: 281px;
+    width: 297px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.main4 {
+    position: absolute;
+    top: 385px;
+    left: 281px;
+    width: 297px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
