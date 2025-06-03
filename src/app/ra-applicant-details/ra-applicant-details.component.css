@@ -520,7 +520,6 @@
     left: 0px;
     width: 122.9px;
     height: 25px;
-    color: #00367d;
 }
 
 .primaryIndividual {
@@ -943,8 +942,6 @@
     justify-content: flex-start;
 }
 
-
-
 .main3 {
     position: absolute;
     top: 466px;
@@ -1133,3 +1130,11 @@
     justify-content: flex-start;
 }
 
+.noBorderInputs {
+    width: 300px;
+    border: none  
+}
+
+.decreaseWidth {
+    width: 140px;
+}

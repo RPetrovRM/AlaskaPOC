@@ -7,12 +7,12 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatStepper, MatStepperModule, MatStepperNext} from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-ra-applicant-details',
   imports: [ ReactiveFormsModule, FormsModule, MatInputModule, MatFormFieldModule,
-     MatStepperModule, MatSelectModule, MatOptionModule, CommonModule],
+     MatStepperModule, MatSelectModule, MatOptionModule, CommonModule, NgClass],
   standalone: true,
   templateUrl: './ra-applicant-details.component.html',
   styleUrl: './ra-applicant-details.component.css'
@@ -26,7 +26,12 @@ export class RaApplicantDetailsComponent  {
   primaryClicked = signal(false);
   contactClicked = signal(false);
   householdClicked = signal(false);  
-  finalizeClicked = signal(false);
+  finalizeClicked = signal(false);  
+  closeClicked = false;
+
+  noDisplay  = {
+    'display':'block'
+};
 
 
   appDetailsGroup= this._formBuilder.group({ 
@@ -94,5 +99,20 @@ export class RaApplicantDetailsComponent  {
       replaceUrl: true,
     });
   }
+
+    onListIconClick() {// iconClickable
+    this.closeClicked = !this.closeClicked;
+    if (this.closeClicked) {
+      this.noDisplay = {
+        'display': 'none'
+      };
+      
+    } else {
+      this.noDisplay = {
+        'display': 'block'
+      };
+    }
+  }
+  
   
 }

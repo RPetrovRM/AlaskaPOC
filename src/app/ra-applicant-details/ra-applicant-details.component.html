@@ -1,16 +1,16 @@
 <div class="appReg">
     <div class="topLevelNavigation">
         <div class="intergratedEligibilitySystem">INTEGRATED ELIGIBILITY SYSTEM</div>
-        <img class="usercircleIcon" alt="" src="UserCircle.png" />
-        <img class="topLevelNavigationChild" alt="" src="Star 7.png" />
-        <img class="topLevelNavigationItem" alt="" src="Star 8.png" />
-        <img class="topLevelNavigationInner" alt="" src="Star 9.png" />
-        <img class="listIcon" alt="" src="List.png" />
-        <div class="topLevelTabs">
+        <img class="usercircleIcon" alt="" src="/UserCircle.png" />
+        <img class="topLevelNavigationChild" alt="" src="/Star 7.png" />
+        <img class="topLevelNavigationItem" alt="" src="/Star 8.png" />
+        <img class="topLevelNavigationInner" alt="" src="/Star 9.png" />
+       <img class="listIcon" alt="" src="/List.png" onkeypress="onListIconClick()" />
+              <div class="topLevelTabs">
             <div class="sydneyHoelter">Sydney Hoelter</div>
         </div>
     </div>
-    <div class="collapsedPanel">
+    <div class="collapsedPanel"  [ngClass]="{'decreaseWidth': closeClicked}">
         <div class="blueSeclection"></div>
         <div class="application">Application</div>
         <div class="home">Home</div>
@@ -137,7 +137,7 @@
                         <div class="input">
                             <!-- <div class="content" /> -->
                              <input for="lastName" class="noBorderInputs" type="text" id="lastName" name="lastName" formControlName="lastName" />
-                                <img class="icon" alt="" src="/Icon.png" />
+                             
                         </div>
                     </div>
                 </div>
@@ -147,14 +147,11 @@
                     <div class="inputWithLabel">
                         <div class="label2">Title</div>
                         <div class="input">
-                        <input for="title" class="noBorderInputs" type="text" id="title" name="title" formControlName="title" />
-                        <!-- <mat-select formControlName="title">
-                            <mat-option value="" disabled selected>Select an option</mat-option>
-                            <mat-option *ngFor="let type of householdStatuses" [value]="type.code">
-                                {{ type.description }}
-                            </mat-option>
-                        </mat-select> -->
-                           <img class="icon" alt="" src="/Icon.png" />
+                        <mat-select formControlName="title">
+                            <mat-option value="Mr">Mr</mat-option>
+                            <mat-option value="Ms">Ms</mat-option>
+                            <mat-option value="Mrs">Mrs</mat-option>
+                        </mat-select>                         
                         </div>
                     </div>
                 </div>
@@ -165,7 +162,7 @@
                         <div class="label2">Middle Name</div>
                         <div class="input">
                          <input for="middleName" class="noBorderInputs" type="text" id="middleName" name="middleName" formControlName="middleName" />
-                            <img class="icon" alt="" src="/Icon.png" />
+                           
                         </div>
                     </div>
                 </div>
@@ -173,15 +170,16 @@
             <div class="inputFieldLarge4">
                 <div class="inputFieldBase">
                     <div class="inputWithLabel">
-                        <div class="label2">Suffix</div>
+                        <div class="label2">Suffix</div> 
                         <div class="input">
-                        <input for="suffix" class="noBorderInputs" type="text" id="suffix" name="suffix" formControlName="suffix" />
-                        <!-- <mat-select formControlName="title">
-                            <mat-option value="" disabled selected>Select an option</mat-option>
-                            <mat-option *ngFor="let type of householdStatuses" [value]="type.code">
-                                {{ type.description }}
-                            </mat-option>
-                        </mat-select> -->
+                         <!-- <mat-label>Suffix</mat-label> -->
+                        <mat-select formControlName="suffix">
+                            <mat-option value="Jr.">Jr.</mat-option>
+                            <mat-option value="Sr.">Sr.</mat-option>
+                            <mat-option value="I">I</mat-option>
+                            <mat-option value="II">II</mat-option>
+                            <mat-option value="III">III</mat-option>
+                        </mat-select>
                         </div>
                     </div>
                 </div>
@@ -193,7 +191,7 @@
                         <div class="input">
                             <!-- <div class="content" /> -->
                              <input for="lastNameAtBirth" class="noBorderInputs" type="text" id="lastNameAtBirth" name="lastNameAtBirth" formControlName="lastNameAtBirth" />   
-                                <img class="icon" alt="" src="/Icon.png" />
+                            
                         </div>
                     </div>
                 </div>
@@ -204,8 +202,7 @@
                         <div class="label2">Date of Birth   <img class="requiredIcon" alt="" src="Required.png" /></div>
                         <div class="input">
                        <input for="dateOfBirth" class="noBorderInputs" type="date" id="dateOfBirth" name="dateOfBirth" formControlName="dateOfBirth" />
-                        <!-- <div class="content" /> -->
-                            <img class="icon" alt="" src="/Icon.png" />
+                       
                          </div>
                     </div>
                 </div>
@@ -223,8 +220,8 @@
                             <mat-option value="male">Male</mat-option>
                         </mat-select>
                         </div>
-                          <img class="icon" alt="" src="/Icon.png" />
-                    </div>
+                       
+                    </div>  
                 </div>
             </div>
              <div class="button2">
@@ -233,7 +230,9 @@
     </div>
     <div class="button3">
       
-         <button type="button" class="buttonBase3" mat-button matStepperPrevious><span style="color: black;">Back</span></button>
+         <button type="button" id="back-button" class="buttonBase3" mat-button matStepperPrevious
+         (click)="updateNavSelect()"
+         ><span style="color: black;">Back</span></button>
         
     </div>
             </form>
@@ -382,7 +381,9 @@
             (click)="updateNavSelect2()"><span style="color: white;">Next</span></button>
             </div>
             <div class="button3">
-            <button type="button" class="buttonBase3"mat-button matStepperPrevious><span style="color: black;">Back</span></button>
+            <button type="button" id="back-button" class="buttonBase3" mat-button matStepperPrevious
+            (click)="updateNavSelect1()"
+            ><span style="color: black;">Back</span></button>
             </div>
         </form>
 </mat-step>
@@ -402,7 +403,7 @@
                             <mat-option value="no">No</mat-option>
                         </mat-select>
                         </div>
-                          <img class="icon" alt="" src="/Icon.png" />
+                        
                     </div>
                 </div>
           
@@ -411,7 +412,9 @@
             (click)="updateNavSelect3()"><span style="color: white;">Next</span></button>
         </div>
         <div class="button3">
-            <button type="button" class="buttonBase3" mat-button matStepperPrevious><span style="color: black;">Back</span></button>
+            <button type="button" id="back-button" class="buttonBase3" mat-button matStepperPrevious
+            (click)="updateNavSelect2()"
+            ><span style="color: black;">Back</span></button>
         </div>
     </form>
 </mat-step>
@@ -422,16 +425,15 @@
        
                 <div class="inputFieldLarge2C">
                     <div class="inputWithLabel2C">
-                        <div class="label2">Office  <img class="requiredIcon" alt="" src="Required.png" /></div> 
-                       <div class="input">
-                            <!-- <div class="content" /> -->
+                        <div class="label2">Office <span>   <img class="requiredIcon" alt="" src="Required.png" /></span></div> 
+                       <div class="input">                        
                         <mat-select formControlName="office">
                             <mat-option value="" disabled selected>Select an option</mat-option>
                             <mat-option value="yes">Yes</mat-option>
                             <mat-option value="no">No</mat-option>
                         </mat-select>
                         </div>
-                          <img class="icon" alt="" src="/Icon.png" />
+                         
                     </div>
                 </div>
           
@@ -439,7 +441,7 @@
             <button type="submit" id="next-button" class="buttonBase2" mat-button><span style="color: white;">Submit</span></button>
             </div>
             <div class="button3">
-            <button type="button" class="buttonBase3" (click)="goBack()"><span style="color: black;">Close</span></button>
+            <button type="button" id="close-button" class="buttonBase3" (click)="goBack()"><span style="color: black;">Close</span></button>
             </div>
     </form>
 </mat-step>
