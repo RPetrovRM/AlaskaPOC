@@ -38,14 +38,14 @@
         <img class="vectorIcon" alt="" src="Vector.png" />
     </div>
     
-    <div class="card">
+    <div class="card" >
         <div class="label3">Register Application</div>
         <div class="topNavigation">
-            <div class="topLevelTabs1" [ngClass]="{'notSelected': primaryClicked}">
+            <div class="topLevelTabs1">
                 <div class="applicantDetails">Applicant Details</div>
             </div>
             <div class="topLevelTabs2">
-                <div class="primaryIndividual"  [ngClass]="{'selectedStep': primaryClicked}">Primary Individual</div>
+                <div class="primaryIndividual" >Primary Individual</div>
             </div>
             <div class="topLevelTabs3">
                 <div class="contact">Contact</div>
@@ -56,8 +56,12 @@
             <div class="topLevelTabs5">
                 <div class="contact">Finalize</div>
             </div>
-        </div>
-        <div class="cardChild"></div>
+        </div>      
+       <div [class.cardChild]="this.applicantOn()"></div>
+        <div [class.cardChild1]="this.primaryClicked()"></div>
+        <div [class.cardChild2]="this.contactClicked()"></div>  
+        <div [class.cardChild3]="this.householdClicked()"></div>
+        <div [class.cardChild4]="this.finalizeClicked()"></div>
         <div class="label4">{{ searchPageDate }}</div>
     </div>
 <mat-stepper linear #stepper>
@@ -68,7 +72,7 @@
     <div class="main">
         <div class="inputFieldBase">
             <div class="inputWithLabel">
-                <div class="label">Application Type</div>
+                <div >Application Type</div>
                 <div class="input">
                     <!-- <div class="content"></div> -->
                       <input for="applicationType" class="noBorderInputs" type="text" id="applicationType" name="applicationType" formControlName="applicationType" />
@@ -80,7 +84,7 @@
     <div class="main1">        
         <div class="inputFieldBase">
             <div class="inputWithLabel">
-                <div class="label">Program Type</div>
+                <div >Program Type</div>
                 <div class="input">
                     <!-- <div class="content"></div> -->
                       <input for="programType" class="noBorderInputs" type="text" id="programType" name="programType" formControlName="programType" />
@@ -92,7 +96,7 @@
     <div class="main2">
         <div class="inputWithLabel">
             <div class="inputWithLabel">
-                <div class="label">Application Date</div>
+                <div >Application Date</div>
                 <div class="input2">
                   <input for="applicationDate" class="noBorderInputs" type="date" id="applicationDate" name="applicationDate" formControlName="applicationDate" />
                 </div>
@@ -101,15 +105,12 @@
         </div>
     </div>
      <div class="button">
-        <!-- <div class="buttonBase">
-            <div class="text1">Next</div>            
-        </div> -->
-          <button type="button" id="next-button" class="buttonBase" mat-button matStepperNext (click)="primarySelect()"><span style="color: white;">Next</span></button>
+     
+          <button type="button" id="next-button" class="buttonBase" mat-button matStepperNext 
+          (click)="updateNavSelect()"><span style="color: white;">Next</span></button>
     </div>
     <div class="button1">
-        <!-- <div class="buttonBase1">
-            <div class="text1">Close</div>
-        </div> -->
+      
          <button type="button" class="buttonBase1" (click)="goBack()"><span style="color: black;">Close</span></button>
     </div>
 </form>
@@ -200,7 +201,7 @@
            <div class="main3">
                 <div class="inputFieldBase6">
                     <div class="inputWithLabel">
-                        <div class="label2">Date of Birth</div>
+                        <div class="label2">Date of Birth   <img class="requiredIcon" alt="" src="Required.png" /></div>
                         <div class="input">
                        <input for="dateOfBirth" class="noBorderInputs" type="date" id="dateOfBirth" name="dateOfBirth" formControlName="dateOfBirth" />
                         <!-- <div class="content" /> -->
@@ -209,11 +210,11 @@
                     </div>
                 </div>
             </div>
-            <img class="requiredIcon" alt="" src="Required.png" />
+          
             <div class="main4">
                 <div class="inputFieldBase">
                     <div class="inputWithLabel">
-                        <div class="label2">Gender</div>
+                        <div class="label2">Gender  <img class="requiredIcon" alt="" src="Required.png" /></div>
                         <div class="input">
                             <!-- <div class="content" /> -->
                         <mat-select formControlName="gender">
@@ -227,14 +228,222 @@
                 </div>
             </div>
              <div class="button2">
-       
-          <button type="button" id="next-button" class="buttonBase2" mat-button matStepperNext><span style="color: white;">Next</span></button>
+          <button type="button" id="next-button" class="buttonBase2" mat-button matStepperNext 
+          (click)="updateNavSelect1()"><span style="color: white;">Next</span></button>
     </div>
     <div class="button3">
       
-         <button type="button" class="buttonBase3" (click)="goBack()"><span style="color: black;">Back</span></button>
+         <button type="button" class="buttonBase3" mat-button matStepperPrevious><span style="color: black;">Back</span></button>
+        
     </div>
             </form>
 </mat-step>
+<mat-step [stepControl]="contactGroup">   
+
+        <form [formGroup]="contactGroup">  
+               <div class="home1">Contact</div> 
+
+            <div class="inputFieldC">
+                <div class="inputFieldBaseC">
+                    <div class="inputFieldBaseC">
+                        <div class="label2">Phone Number</div>
+                        <div class="input">
+                       <input for="phoneNumber" class="noBorderInputs" type="text" id="phoneNumber" name="phoneNumber" formControlName="phoneNumber" />
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inputField1C">
+                <div class="inputFieldBaseC">
+                    <div class="inputFieldBaseC">
+                        <div class="label2">Alternate Phone Number</div>
+                        <div class="input">
+                        <input for="altPhoneNumber" class="noBorderInputs" type="text" id="altPhoneNumber" name="altPhoneNumber" 
+                        formControlName="altPhoneNumber" />
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+            <div class="inputField2C">
+                <div class="inputFieldBase2C">
+                    <div class="inputWithLabel2">
+                        <div class="label2">Email</div>
+                        <div class="input">
+                      <input for="email" class="noBorderInputs" type="email" id="email" name="email" formControlName="email" />
+                       </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mainC">
+                <div class="inputFieldBase2C">
+                    <div class="inputWithLabel2">
+                        <div class="label2">Phone Number Type</div>
+                          <div class="input">
+                       <input for="phoneType" class="noBorderInputs" type="text" id="phoneType" name="phoneType" 
+                       formControlName="phoneType" />
+                    </div>
+                        <!-- <mat-select formControlName="phoneNumberType">
+                            <mat-option value="" disabled selected>Select an option</mat-option>
+                            <mat-option *ngFor="let type of phoneTypes" [value]="type.code">
+                                {{ type.description }}
+                            </mat-option>
+                        </mat-select> -->
+                    </div>
+                </div>
+            </div>
+            <div class="main1C">
+                <div class="inputFieldBase2C">
+                    <div class="inputWithLabel2">
+                        <div class="label2">Phone Number Type</div>
+                          <div class="input">
+                       <input for="altPhoneType" class="noBorderInputs" type="text" id="altPhoneType" name="altPhoneType" 
+                       formControlName="altPhoneType" />
+                       </div>
+                        <!-- <mat-select formControlName="alternatePhoneNumberType">
+                            <mat-option value="" disabled selected>Select an option</mat-option>
+                            <mat-option *ngFor="let type of phoneTypes" [value]="type.code">
+                                {{ type.description }}
+                            </mat-option>
+                        </mat-select> -->
+                    </div>
+                </div>
+            </div>
+            <div class="inputFieldLargeC">
+                <div class="inputFieldBase2C">
+                    <div class="inputWithLabel2">
+                        <div class="label2">Street 2</div>
+                          <div class="input">
+                        <input for="street2" class="noBorderInputs" type="text" id="street2" name="street2" formControlName="street2" />
+                    </div>  
+                    </div>
+                </div>
+            </div>
+            <div class="inputFieldLarge1C">
+                <div class="inputFieldBase2C">
+                    <div class="inputWithLabel2">
+                        <div class="label2">Country<img class="requiredIcon" alt="" src="Required.png" /></div>
+                          <div class="input">
+                       <input for="country" class="noBorderInputs" type="text" id="country" name="country" formControlName="country" />
+                        <!-- <mat-select formControlName="country">
+                            <mat-option value="" disabled selected>Select an option</mat-option>
+                            <mat-option *ngFor="let type of countries" [value]="type.code">
+                                {{ type.description }}
+                            </mat-option>
+                        </mat-select> -->
+                          </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="">Contact</div>
+            <div class="inputFieldLarge2C">
+                <div class="inputFieldBase2C">
+                    <div class="inputWithLabel2">
+                        <div class="label2">Street 1<img class="requiredIcon" alt="" src="Required.png" /></div>
+                          <div class="input">
+                        <input for="street1" class="noBorderInputs" type="text" id="street1" name="street1" formControlName="street1" />
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inputFieldLarge3C">
+                <div class="inputFieldBase2C">
+                    <div class="inputWithLabel2">
+                        <div class="label2">City<img class="requiredIcon" alt="" src="Required.png" /></div>
+                          <div class="input">
+                      <input for="city" class="noBorderInputs" type="text" id="city" name="city" formControlName="city" />
+                          </div>
+                </div>
+            </div>
+            </div>  
+            <div class="main2C">
+                <div class="inputFieldBase2">
+                    <div class="inputWithLabel2">
+                        <div class="label2">Zip<img class="requiredIcon" alt="" src="Required.png" /></div>
+                          <div class="input">
+                        <input for="zip" class="noBorderInputs" type="text" id="zip" name="zip" formControlName="zip" />
+                          </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inputFieldLarge4C">
+                <div class="inputFieldBase2">
+                    <div class="inputWithLabel2">
+                        <div class="label2">State<img class="requiredIcon" alt="" src="Required.png" /></div>
+                          <div class="input">
+                      <input for="state" class="noBorderInputs" type="text" id="state" name="state" formControlName="state" />
+                          </div>
+                    </div>
+                </div>
+            </div>
+            <div class="button2">
+            <button type="button" id="next-button" class="buttonBase2" mat-button matStepperNext 
+            (click)="updateNavSelect2()"><span style="color: white;">Next</span></button>
+            </div>
+            <div class="button3">
+            <button type="button" class="buttonBase3"mat-button matStepperPrevious><span style="color: black;">Back</span></button>
+            </div>
+        </form>
+</mat-step>
+
+<mat-step [stepControl]="householdMembersGroup">
+    <div class="home1">Household Members</div> 
+    <form [formGroup]="householdMembersGroup"> 
+       
+                <div class="inputFieldLarge2C">
+                    <div class="inputWithLabel2C">
+                        <div class="label2">Are there additional household members? <img class="requiredIcon" alt="" src="Required.png" /></div>
+                        <div class="input">
+                            <!-- <div class="content" /> -->
+                        <mat-select formControlName="householdMembers">
+                            <mat-option value="" disabled selected>Select an option</mat-option>
+                            <mat-option value="yes">Yes</mat-option>
+                            <mat-option value="no">No</mat-option>
+                        </mat-select>
+                        </div>
+                          <img class="icon" alt="" src="/Icon.png" />
+                    </div>
+                </div>
+          
+        <div class="button2">
+            <button type="button" id="next-button" class="buttonBase2" mat-button matStepperNext 
+            (click)="updateNavSelect3()"><span style="color: white;">Next</span></button>
+        </div>
+        <div class="button3">
+            <button type="button" class="buttonBase3" mat-button matStepperPrevious><span style="color: black;">Back</span></button>
+        </div>
+    </form>
+</mat-step>
+
+<mat-step [stepControl]="finalizeGroup">
+    <div class="home1">Finalize</div> 
+    <form [formGroup]="finalizeGroup"> 
+       
+                <div class="inputFieldLarge2C">
+                    <div class="inputWithLabel2C">
+                        <div class="label2">Office  <img class="requiredIcon" alt="" src="Required.png" /></div> 
+                       <div class="input">
+                            <!-- <div class="content" /> -->
+                        <mat-select formControlName="office">
+                            <mat-option value="" disabled selected>Select an option</mat-option>
+                            <mat-option value="yes">Yes</mat-option>
+                            <mat-option value="no">No</mat-option>
+                        </mat-select>
+                        </div>
+                          <img class="icon" alt="" src="/Icon.png" />
+                    </div>
+                </div>
+          
+      <div class="button2">
+            <button type="submit" id="next-button" class="buttonBase2" mat-button><span style="color: white;">Submit</span></button>
+            </div>
+            <div class="button3">
+            <button type="button" class="buttonBase3" (click)="goBack()"><span style="color: black;">Close</span></button>
+            </div>
+    </form>
+</mat-step>
+
 </mat-stepper>
 
+</div>
