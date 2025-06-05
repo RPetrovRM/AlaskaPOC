@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, inject,signal } from '@angular/core';
-import { FormsModule, NgForm, FormGroup, FormBuilder, FormGroupDirective, Validators, ValidatorFn, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject,signal } from '@angular/core';
+import { FormsModule, NgForm,  FormBuilder, FormGroupDirective, Validators, ValidatorFn, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import moment from 'moment';
 import {ErrorStateMatcher, MatOptionModule} from '@angular/material/core';
@@ -8,6 +8,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatStepper, MatStepperModule, MatStepperNext} from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
 import { CommonModule, NgClass } from '@angular/common';
+  import { type Applicant } from '../application-registration/applicant.model';
 
 @Component({
   selector: 'app-ra-applicant-details',
@@ -28,7 +29,8 @@ export class RaApplicantDetailsComponent  {
   householdClicked = signal(false);  
   finalizeClicked = signal(false);  
   closeClicked = false;
-
+   applicant: Applicant[] = [];
+ 
   noDisplay  = {
     'display':'block'
 };
@@ -89,6 +91,17 @@ export class RaApplicantDetailsComponent  {
     this.finalizeClicked.set(true);
   }
 
+
+ngOnInit(): void {  
+  //  this.route.params.subscribe(params => { 
+  //      let applicant = params['applicant'];
+  //      console.log(applicant);
+  //  });;
+  // console.log(history.state);   
+    this.applicant = history.state['applicant'];
+    console.log(this.applicant); 
+}
+  
   onSubmit(form: NgForm) {
     // Handle form submission logic her
     console.log(form.value);

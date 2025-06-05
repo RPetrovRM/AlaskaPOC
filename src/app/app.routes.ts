@@ -10,7 +10,7 @@ export const routes: Routes = [
         children: [
             {path: '', component: HomeComponent},
         { path: 'app-application-registration', component: ApplicationRegistrationComponent }, 
-        { path: 'app-ra-applicant-details', component: RaApplicantDetailsComponent}
+        { path: 'app-ra-applicant-details', component: RaApplicantDetailsComponent, data: { object: 'applicant' } },
         ],
     },
 
