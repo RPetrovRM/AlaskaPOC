@@ -1,0 +1,1140 @@
+.intergratedEligibilitySystem {
+    position: absolute;
+    top: 1px;
+    left: 118px;
+    letter-spacing: -0.04em;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 44px;
+}
+
+.usercircleIcon {
+    position: absolute;
+    top: 6px;
+    left: 1432px;
+    width: 32px;
+    height: 32px;
+}
+
+.topLevelNavigationChild {
+    position: absolute;
+    top: 6px;
+    left: 111px;
+    width: 21px;
+    height: 21px;
+}
+
+.topLevelNavigationItem {
+    position: absolute;
+    top: 25px;
+    left: 126px;
+    width: 14px;
+    height: 14px;
+}
+
+.topLevelNavigationInner {
+    position: absolute;
+    top: 25px;
+    left: 104px;
+    width: 14px;
+    height: 14px;
+}
+
+.listIcon {
+    position: absolute;
+    top: 7px;
+    left: 10px;
+    width: 32px;
+    height: 32px;
+}
+
+.sydneyHoelter {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 186px;
+    height: 25px;
+}
+
+.topLevelTabs {
+    position: absolute;
+    top: 10px;
+    left: 1275px;
+    width: 186px;
+    height: 25px;
+}
+
+.topLevelNavigation {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: #00367d;
+    width: 1514px;
+    height: 45px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+}
+
+.blueSeclection {
+    position: absolute;
+    top: 68px;
+    left: 10px;
+    border-radius: 4px;
+    background-color: #00367d;
+    width: 223px;
+    height: 30px;
+}
+
+.application {
+    position: absolute;
+    top: 68px;
+    left: 49px;
+    color: #f2f2f2;
+    display: flex;
+    align-items: center;
+    width: 163px;
+    height: 28px;
+}
+
+.home {
+    position: absolute;
+    top: 36px;
+    left: 49px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    width: 163px;
+    height: 28px;
+}
+
+.notices {
+    position: absolute;
+    top: 165px;
+    left: 49px;
+    display: flex;
+    align-items: center;
+    width: 163px;
+    height: 29px;
+}
+
+.dataCollection {
+    position: absolute;
+    top: 100px;
+    left: 49px;
+    display: flex;
+    align-items: center;
+    width: 163px;
+    height: 29px;
+}
+
+.eligibility {
+    position: absolute;
+    top: 133px;
+    left: 49px;
+    display: flex;
+    align-items: center;
+    width: 163px;
+    height: 28px;
+}
+
+.tasks {
+    position: absolute;
+    top: 198px;
+    left: 49px;
+    display: flex;
+    align-items: center;
+    width: 192px;
+    height: 28px;
+}
+.automatedRenewal {
+    position: absolute;
+    top: 260px;
+    left: 49px;
+    display: flex;
+    align-items: center;
+    width: 163px;
+    height: 29px;
+}
+
+.unifiedSearch {
+    position: absolute;
+    top: 230px;
+    left: 49px;
+    display: flex;
+    align-items: center;
+    width: 163px;
+    height: 29px;
+}
+
+.arDashboard {
+    position: absolute;
+    top: 263px;
+    left: 49px;
+    display: flex;
+    align-items: center;
+    width: 163px;
+    height: 28px;
+}
+
+.current {
+    position: absolute;
+    top: 295px;
+    left: 49px;
+    display: flex;
+    align-items: center;
+    width: 163px;
+    height: 29px;
+}
+
+.ilinx {
+    position: absolute;
+    top: 328px;
+    left: 49px;
+    display: flex;
+    align-items: center;
+    width: 163px;
+    height: 28px;
+}
+
+.ievs {
+    position: absolute;
+    top: 360px;
+    left: 49px;
+    display: flex;
+    align-items: center;
+    width: 163px;
+    height: 28px;
+}
+
+.admin {
+    position: absolute;
+    top: 392px;
+    left: 49px;
+    display: flex;
+    align-items: center;
+    width: 163px;
+    height: 28px;
+}
+
+.appRegIcon {
+    position: absolute;
+    top: 71px;
+    left: 17px;
+    width: 24px;
+    height: 24px;
+}
+
+.dataCollectionIcon {
+    position: absolute;
+    top: 103px;
+    left: 17px;
+    width: 24px;
+    height: 24px;
+}
+
+.adminIcon {
+    position: absolute;
+    top: 391px;
+    left: 17px;
+    width: 24px;
+    height: 24px;
+}
+
+.ievsIcon {
+    position: absolute;
+    top: 359px;
+    left: 17px;
+    width: 24px;
+    height: 24px;
+}
+
+.ilinxIcon {
+    position: absolute;
+    top: 327px;
+    left: 17px;
+    width: 24px;
+    height: 24px;
+}
+
+.currentIcon {
+    position: absolute;
+    top: 295px;
+    left: 17px;
+    width: 24px;
+    height: 24px;
+}
+
+.automatedRenewalIcon {
+    position: absolute;
+    top: 263px;
+    left: 17px;
+    width: 24px;
+    height: 24px;
+}
+
+.unifiedSearchIcon {
+    position: absolute;
+    top: 231px;
+    left: 17px;
+    width: 24px;
+    height: 24px;
+}
+
+.tasksIcon {
+    position: absolute;
+    top: 199px;
+    left: 17px;
+    width: 24px;
+    height: 24px;
+}
+
+.noticesIcon {
+    position: absolute;
+    top: 167px;
+    left: 17px;
+    width: 24px;
+    height: 24px;
+}
+
+.eligibilityDeterminationIcon {
+    position: absolute;
+    top: 135px;
+    left: 16px;
+    width: 24px;
+    height: 24px;
+}
+
+.vectorIcon {
+    position: absolute;
+    height: 1.63%;
+    width: 6.64%;
+    top: 4.28%;
+    right: 84.65%;
+    bottom: 94.09%;
+    left: 8.71%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+
+.collapsedPanel {
+    position: absolute;
+    top: 45px;
+    left: 0px;
+    background-color: #fff;
+    width: 241px;
+    height: 981px;
+    overflow: hidden;
+}
+
+.label {
+    position: relative;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.content {
+    flex: 1;
+    height: 24px;
+}
+
+.icon {
+    width: 12px;
+    position: relative;
+    height: 6px;
+}
+
+.input {
+    align-self: stretch;
+    box-shadow: 0px 1px 2px rgba(10, 13, 18, 0.05);
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #c2c2c2;
+    box-sizing: border-box;
+    height: 36px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 14px;
+    gap: 8px;
+}
+
+.inputWithLabel {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 6px;
+}
+
+.inputFieldBase {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.main {
+    position: absolute;
+    top: 333px;
+    left: 281px;
+    width: 297px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.main1 {
+    position: absolute;
+    top: 417px;
+    left: 281px;
+    width: 297px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.vectorIcon1 {
+    position: absolute;
+    height: 81.25%;
+    width: 75%;
+    top: 6.25%;
+    right: 12.5%;
+    bottom: 12.5%;
+    left: 12.5%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+
+.calendardots {
+    width: 24px;
+    position: relative;
+    height: 24px;
+}
+
+.text {
+    width: 269px;
+    position: relative;
+    line-height: 24px;
+    display: none;
+    flex-shrink: 0;
+}
+
+.content2 {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+}
+
+.helpIcon {
+    width: 16px;
+    position: relative;
+    height: 16px;
+    display: none;
+}
+
+.input2 {
+    align-self: stretch;
+    box-shadow: 0px 1px 2px rgba(10, 13, 18, 0.05);
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #c2c2c2;
+    box-sizing: border-box;
+    height: 36px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 14px 10px 12px;
+    gap: 8px;
+    font-size: 16px;
+}
+
+.hintText {
+    width: 320px;
+    position: relative;
+    line-height: 20px;
+    color: #535862;
+    display: none;
+}
+
+.main2 {
+    position: absolute;
+    top: 249px;
+    left: 281px;
+    width: 297px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.label3 {
+    position: absolute;
+    top: 31px;
+    left: 40px;
+    line-height: 20px;
+    font-weight: 500;
+    display: inline-block;
+    width: 276px;
+    height: 19px;
+}
+
+.applicantDetails {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 122.9px;
+    height: 25px;
+}
+
+.topLevelTabs1 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 122.9px;
+    height: 25px;
+}
+
+.primaryIndividual {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 154px;
+    height: 25px;
+}
+
+.topLevelTabs2 {
+    position: absolute;
+    top: 0px;
+    left: 141px;
+    width: 154px;
+    height: 25px;
+}
+
+.contact {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 167.4px;
+    height: 25px;
+}
+
+.topLevelTabs3 {
+    position: absolute;
+    top: 0px;
+    left: 271.87px;
+    width: 167.4px;
+    height: 25px;
+}
+
+.topLevelTabs4 {
+    position: absolute;
+    top: 0px;
+    left: 431.24px;
+    width: 167.4px;
+    height: 25px;
+}
+
+.topLevelTabs5 {
+    position: absolute;
+    top: 0px;
+    left: 598.62px;
+    width: 167.4px;
+    height: 25px;
+}
+
+.topNavigation {
+    position: absolute;
+    top: 84px;
+    left: 40px;
+    width: 766px;
+    height: 25px;
+    text-align: center;
+    font-size: 15px;
+    color: #181d27;
+}
+/* appdetails */
+.cardChild {
+    position: absolute;
+    top: 108px;
+    left: 39px;
+    border-top: 2px solid #00367d;
+    box-sizing: border-box;
+    width: 125px;
+    height: 2px;
+}
+/* .primaryIndividual */
+.cardChild1 {
+    position: absolute;
+    top: 108px;
+    left: 193px;
+    border-top: 2px solid #00367d;
+    box-sizing: border-box;
+    width: 125px;
+    height: 2px;
+}
+/* contact */
+.cardChild2 {
+    position: absolute;
+    top: 108px;
+    left:  350px;
+    border-top: 2px solid #00367d;
+    box-sizing: border-box;
+    width: 100px;
+    height: 2px;
+}
+/* household */
+.cardChild3 {
+    position: absolute;
+    top: 108px;
+    left: 493px;
+    border-top: 2px solid #00367d;
+    box-sizing: border-box;
+    width: 128px;
+    height: 2px;
+}
+/* finalize */
+.cardChild4 {
+    position: absolute;
+    top: 108px;
+    left: 670px;
+    border-top: 2px solid #00367d;
+    box-sizing: border-box;
+    width: 105px;
+    height: 2px;
+}
+
+.label4 {
+    position: absolute;
+    top: 84px;
+    left: 971px;
+    font-size: 14px;
+    text-align: right;
+    display: inline-block;
+    width: 276px;
+    height: 19px;
+}
+
+.card {
+    position: absolute;
+    top: 45px;
+    left: 241px;
+    box-shadow: 4px 4px 5px 1px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    width: 1273px;
+    height: 109px;
+    overflow: hidden;
+    font-size: 24px;
+    color: #08328e;
+}
+
+.home1 {
+    position: absolute;
+    top: 184px;
+    left: 281px;
+    font-size: 24px;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.text1 {
+    position: relative;
+    line-height: 24px;
+    font-weight: 600;
+}
+
+.buttonBase {
+    width: 130px;
+    box-shadow: 0px 1px 2px rgba(10, 13, 18, 0.05);
+    border-radius: 8px;
+    background-color: #00367d;
+    border: 1px solid #00367d;
+    box-sizing: border-box;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+}
+
+.button {
+    position: absolute;
+    top: 902px;
+    left: 1327px;
+    border-radius: 8px;
+    width: 121px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: 16px;
+    color: #fff;
+}
+
+.buttonBase1 {
+    width: 130px;
+    box-shadow: 0px 1px 2px rgba(10, 13, 18, 0.05);
+    border-radius: 8px;
+    background-color: #c2c2c2;
+    border: 1px solid #c2c2c2;
+    box-sizing: border-box;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+}
+
+.button1 {
+    position: absolute;
+    top: 902px;
+    left: 1181px;
+    border-radius: 8px;
+    width: 120px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: 16px;
+}
+
+.appReg {
+    width: 100%;
+    position: relative;
+    background-color: #f4f4f4;
+    height: 983px;
+    overflow: hidden;
+    text-align: left;
+    font-size: 14px;
+    color: #181d27;
+    font-family: Inter;
+}
+
+.noBorderInputs {
+    width: 300px;
+    border: none  
+}
+
+
+.buttonBase2 {
+    width: 130px;
+    box-shadow: 0px 1px 2px rgba(10, 13, 18, 0.05);
+    border-radius: 8px;
+    background-color: #00367d;
+    border: 1px solid #00367d;
+    box-sizing: border-box;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+}
+
+.button2 {
+    position: absolute;
+    top: 902px;
+    left: 1327px;
+    border-radius: 8px;
+    width: 121px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: 16px;
+    color: #fff;
+}
+
+.buttonBase3 {
+    width: 130px;
+    box-shadow: 0px 1px 2px rgba(10, 13, 18, 0.05);
+    border-radius: 8px;
+    background-color: #c2c2c2;
+    border: 1px solid #c2c2c2;
+    box-sizing: border-box;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+}
+
+.button3 {
+    position: absolute;
+    top: 902px;
+    left: 1181px;
+    border-radius: 8px;
+    width: 120px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: 16px;
+}
+
+
+
+.input2 {
+    align-self: stretch;
+    box-shadow: 0px 1px 2px rgba(10, 13, 18, 0.05);
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #c2c2c2;
+    box-sizing: border-box;
+    height: 36px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 14px;
+    gap: 8px;
+}
+
+
+.inputFieldLarge {
+    position: absolute;
+    top: 234px;
+    left: 281px;
+    width: 557px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.inputFieldLarge1 {
+    position: absolute;
+    top: 312px;
+    left: 281px;
+    width: 557px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+
+.inputFieldLarge2 {
+    position: absolute;
+    top: 232px;
+    left: 898px;
+    width: 557px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.inputFieldLarge3 {
+    position: absolute;
+    top: 310px;
+    left: 898px;
+    width: 557px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.inputFieldLarge4 {
+    position: absolute;
+    top: 388px;
+    left: 898px;
+    width: 557px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.inputFieldLarge5 {
+    position: absolute;
+    top: 466px;
+    left: 898px;
+    width: 557px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+
+.calendardots {
+    width: 24px;
+    position: relative;
+    height: 24px;
+}
+
+.content6 {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.input6 {
+    align-self: stretch;
+    box-shadow: 0px 1px 2px rgba(10, 13, 18, 0.05);
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #c2c2c2;
+    box-sizing: border-box;
+    height: 36px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 14px 10px 12px;
+}
+
+.inputFieldBase6 {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.main3 {
+    position: absolute;
+    top: 466px;
+    left: 281px;
+    width: 297px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.main4 {
+    position: absolute;
+    top: 385px;
+    left: 281px;
+    width: 297px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.mainC {
+    position: absolute;
+    top: 541px;
+    left: 791px;
+    width: 269px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.main1C {
+    position: absolute;
+    top: 612px;
+    left: 791px;
+    width: 269px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.main2C {
+    position: absolute;
+    top: 290px;
+    left: 283px;
+    width: 252px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.inputFieldLarge1C {
+    position: absolute;
+    top: 361px;
+    left: 283px;
+    width: 472px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.inputFieldLarge2C {
+    position: absolute;
+    top: 224px;
+    left: 283px;
+    width: 472px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.inputFieldLarge3C {
+    position: absolute;
+    top: 293px;
+    left: 806px;
+    width: 472px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.inputFieldLarge4C {
+    position: absolute;
+    top: 361px;
+    left: 806px;
+    width: 472px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.inputFieldBaseC {
+    align-self: stretch;
+    height: 62px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 6px;
+}
+
+.inputFieldC {
+    position: absolute;
+    top: 542px;
+    left: 281px;
+    width: 474px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.inputField1C {
+    position: absolute;
+    top: 615px;
+    left: 281px;
+    width: 474px;
+    height: 62px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+
+.inputFieldBase2C {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.inputField2C {
+    position: absolute;
+    top: 688px;
+    left: 281px;
+    width: 474px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+
+.inputFieldLargeC {
+    position: absolute;
+    top: 224px;
+    left: 806px;
+    width: 472px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+
+.inputFieldC {
+    position: absolute;
+    top: 542px;
+    left: 281px;
+    width: 474px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.inputField1C {
+    position: absolute;
+    top: 615px;
+    left: 281px;
+    width: 474px;
+    height: 62px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.noBorderInputs {
+    width: 300px;
+    border: none  
+}
+
+.decreaseWidth {
+    width: 140px;
+}

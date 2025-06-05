@@ -17,7 +17,7 @@ export class AppComponent {
 
   register(){   
     this.router.navigate(['/app-application-registration'], {
-      replaceUrl: true,
+      replaceUrl: true
     });
   }
  

@@ -1,16 +1,17 @@
   <div class="appReg2">
             <div class="topLevelNavigation">
-                <div class="intergratedEligibilitySystem">INTERGRATED ELIGIBILITY SYSTEM</div>
+                <div class="intergratedEligibilitySystem">INTEGRATED ELIGIBILITY SYSTEM</div>
                 <img class="usercircleIcon" alt="" src="/UserCircle.png" />
                 <img class="topLevelNavigationChild" alt="" src="/Star 7.png" />
                 <img class="topLevelNavigationItem" alt="" src="/Star 8.png" />
                 <img class="topLevelNavigationInner" alt="" src="/Star 9.png" />
-                <img class="listIcon" alt="" src="/List.png" />
+                <img class="listIcon" alt="" src="/List.png" (click)="onListIconClick()" />
                 <div class="topLevelTabs">
                     <div class="sydneyHoelter">Sydney Hoelter</div>
                 </div>
             </div>
-            <div class="collapsedPanel">
+            <div class="collapsedPanel" [ngClass]="{'decreaseWidth': closeClicked}" >
+                  <div [ngStyle]="noDisplay" >
                 <div class="blueSeclection" > </div>
                 <div class="application">Application</div>
                 <div class="home">Home</div>
@@ -24,7 +25,8 @@
                 <div class="ilinx">ILINX</div>
                 <div class="ievs">IEVS</div>
                 <div class="admin">Admin</div>
-             
+                </div>
+           
                 <img class="appRegIcon" alt="" src="/App Reg.png" />
                 <img class="dataCollectionIcon" alt="" src="/Data Collection.png" />
                 <img class="adminIcon" alt="" src="/Admin.png" />
@@ -37,7 +39,8 @@
                 <img class="noticesIcon" alt="" src="/Notices.png" />
                 <img class="eligibilityDeterminationIcon" alt="" src="/Eligibility Determination.png" />
                 <img class="vectorIcon" alt="" src="/Vector.png" />
-            </div>
+                </div>
+           
             <div class="label">{{ searchPageDate }}</div>
             <div class="label1">Search Person</div>
             <div class="label2">OR</div>
@@ -47,8 +50,8 @@
                     <div class="inputWithLabel form-group">
                         <div class="label3">Application Number</div>
                         <div class="input">
-                            <input for="applicationNumber" class="noBorderInputs" type="text" id="applicationNumber" name="applicationNumber" ngModel />
-                          
+                            <input for="appNumber" class="noBorderInputs" type="text" id="appNumber" name="appNumber" ngModel />
+
                         </div>
                     </div>
                 </div>

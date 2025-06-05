@@ -1,0 +1,451 @@
+<div class="appReg">
+    <div class="topLevelNavigation">
+        <div class="intergratedEligibilitySystem">INTEGRATED ELIGIBILITY SYSTEM</div>
+        <img class="usercircleIcon" alt="" src="/UserCircle.png" />
+        <img class="topLevelNavigationChild" alt="" src="/Star 7.png" />
+        <img class="topLevelNavigationItem" alt="" src="/Star 8.png" />
+        <img class="topLevelNavigationInner" alt="" src="/Star 9.png" />
+       <img class="listIcon" alt="" src="/List.png" onkeypress="onListIconClick()" />
+              <div class="topLevelTabs">
+            <div class="sydneyHoelter">Sydney Hoelter</div>
+        </div>
+    </div>
+    <div class="collapsedPanel"  [ngClass]="{'decreaseWidth': closeClicked}">
+        <div class="blueSeclection"></div>
+        <div class="application">Application</div>
+        <div class="home">Home</div>
+        <div class="notices">Notices</div>
+        <div class="dataCollection">Data Collection</div>
+        <div class="eligibility">Eligibility</div>
+        <div class="tasks">Tasks</div>
+        <div class="unifiedSearch">Unified Search</div>
+        <div class="automatedRenewal">Automated Renewal</div>
+        <div class="current">Current</div>
+        <div class="ilinx">ILINX</div>
+        <div class="ievs">IEVS</div>
+        <div class="admin">Admin</div>
+        <img class="appRegIcon" alt="" src="App Reg.png" />
+        <img class="dataCollectionIcon" alt="" src="Data Collection.png" />
+        <img class="adminIcon" alt="" src="Admin.png" />
+        <img class="ievsIcon" alt="" src="IEVS.png" />
+        <img class="ilinxIcon" alt="" src="ILINX.png" />
+        <img class="currentIcon" alt="" src="Current.png" />
+        <img class="automatedRenewalIcon" alt="" src="Automated Renewal.png" />
+        <img class="unifiedSearchIcon" alt="" src="Unified Search.png" />
+        <img class="tasksIcon" alt="" src="Tasks.png" />
+        <img class="noticesIcon" alt="" src="Notices.png" />
+        <img class="eligibilityDeterminationIcon" alt="" src="Eligibility Determination.png" />
+        <img class="vectorIcon" alt="" src="Vector.png" />
+    </div>
+    
+    <div class="card" >
+        <div class="label3">Register Application</div>
+        <div class="topNavigation">
+            <div class="topLevelTabs1">
+                <div class="applicantDetails">Applicant Details</div>
+            </div>
+            <div class="topLevelTabs2">
+                <div class="primaryIndividual" >Primary Individual</div>
+            </div>
+            <div class="topLevelTabs3">
+                <div class="contact">Contact</div>
+            </div>
+            <div class="topLevelTabs4">
+                <div class="contact">Household Members</div>
+            </div>
+            <div class="topLevelTabs5">
+                <div class="contact">Finalize</div>
+            </div>
+        </div>      
+       <div [class.cardChild]="this.applicantOn()"></div>
+        <div [class.cardChild1]="this.primaryClicked()"></div>
+        <div [class.cardChild2]="this.contactClicked()"></div>  
+        <div [class.cardChild3]="this.householdClicked()"></div>
+        <div [class.cardChild4]="this.finalizeClicked()"></div>
+        <div class="label4">{{ searchPageDate }}</div>
+    </div>
+<mat-stepper linear #stepper>
+  
+ <mat-step [stepControl]="appDetailsGroup" >
+            <form [formGroup]="appDetailsGroup">               
+                 <div class="home1">Applicant Details</div> 
+    <div class="main">
+        <div class="inputFieldBase">
+            <div class="inputWithLabel">
+                <div >Application Type</div>
+                <div class="input">
+                    <!-- <div class="content"></div> -->
+                      <input for="applicationType" class="noBorderInputs" type="text" id="applicationType" name="applicationType" formControlName="applicationType" />
+                    <img class="icon" alt="" src="/Icon.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main1">        
+        <div class="inputFieldBase">
+            <div class="inputWithLabel">
+                <div >Program Type</div>
+                <div class="input">
+                    <!-- <div class="content"></div> -->
+                      <input for="programType" class="noBorderInputs" type="text" id="programType" name="programType" formControlName="programType" />
+                    <img class="icon" alt="" src="/Icon.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main2">
+        <div class="inputWithLabel">
+            <div class="inputWithLabel">
+                <div >Application Date</div>
+                <div class="input2">
+                  <input for="applicationDate" class="noBorderInputs" type="date" id="applicationDate" name="applicationDate" formControlName="applicationDate" />
+                </div>
+            </div>
+           
+        </div>
+    </div>
+     <div class="button">
+     
+          <button type="button" id="next-button" class="buttonBase" mat-button matStepperNext 
+          (click)="updateNavSelect()"><span style="color: white;">Next</span></button>
+    </div>
+    <div class="button1">
+      
+         <button type="button" class="buttonBase1" (click)="goBack()"><span style="color: black;">Close</span></button>
+    </div>
+</form>
+</mat-step>
+<mat-step [stepControl]="primaryIndividualGroup">
+   <div class="home1">Primary Individual</div> 
+            <form [formGroup]="primaryIndividualGroup">               
+                 <div class="inputFieldLarge">
+                <div class="inputFieldBase">
+                    <div class="inputWithLabel">
+                        <div class="label2">First Name</div>
+                        <div class="input">
+                            <!-- <div class="content" /> -->
+                             <input for="firstName" class="noBorderInputs" type="text" id="firstName" name="firstName" formControlName="firstName" />
+                                <img class="icon" alt="" src="/Icon.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inputFieldLarge1">
+                <div class="inputFieldBase">
+                    <div class="inputWithLabel">
+                        <div class="label2">Last Name</div>
+                        <div class="input">
+                            <!-- <div class="content" /> -->
+                             <input for="lastName" class="noBorderInputs" type="text" id="lastName" name="lastName" formControlName="lastName" />
+                             
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inputFieldLarge2">
+                <div class="inputFieldBase">
+                    <div class="inputWithLabel">
+                        <div class="label2">Title</div>
+                        <div class="input">
+                        <mat-select formControlName="title">
+                            <mat-option value="Mr">Mr</mat-option>
+                            <mat-option value="Ms">Ms</mat-option>
+                            <mat-option value="Mrs">Mrs</mat-option>
+                        </mat-select>                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inputFieldLarge3">
+                <div class="inputFieldBase">
+                    <div class="inputWithLabel">
+                        <div class="label2">Middle Name</div>
+                        <div class="input">
+                         <input for="middleName" class="noBorderInputs" type="text" id="middleName" name="middleName" formControlName="middleName" />
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inputFieldLarge4">
+                <div class="inputFieldBase">
+                    <div class="inputWithLabel">
+                        <div class="label2">Suffix</div> 
+                        <div class="input">
+                         <!-- <mat-label>Suffix</mat-label> -->
+                        <mat-select formControlName="suffix">
+                            <mat-option value="Jr.">Jr.</mat-option>
+                            <mat-option value="Sr.">Sr.</mat-option>
+                            <mat-option value="I">I</mat-option>
+                            <mat-option value="II">II</mat-option>
+                            <mat-option value="III">III</mat-option>
+                        </mat-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inputFieldLarge5">
+                <div class="inputFieldBase">
+                    <div class="inputWithLabel">
+                        <div class="label2">Birth Last Name</div>
+                        <div class="input">
+                            <!-- <div class="content" /> -->
+                             <input for="lastNameAtBirth" class="noBorderInputs" type="text" id="lastNameAtBirth" name="lastNameAtBirth" formControlName="lastNameAtBirth" />   
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+           <div class="main3">
+                <div class="inputFieldBase6">
+                    <div class="inputWithLabel">
+                        <div class="label2">Date of Birth   <img class="requiredIcon" alt="" src="Required.png" /></div>
+                        <div class="input">
+                       <input for="dateOfBirth" class="noBorderInputs" type="date" id="dateOfBirth" name="dateOfBirth" formControlName="dateOfBirth" />
+                       
+                         </div>
+                    </div>
+                </div>
+            </div>
+          
+            <div class="main4">
+                <div class="inputFieldBase">
+                    <div class="inputWithLabel">
+                        <div class="label2">Gender  <img class="requiredIcon" alt="" src="Required.png" /></div>
+                        <div class="input">
+                            <!-- <div class="content" /> -->
+                        <mat-select formControlName="gender">
+                            <mat-option value="" disabled selected>Select an option</mat-option>
+                            <mat-option value="female">Female</mat-option>
+                            <mat-option value="male">Male</mat-option>
+                        </mat-select>
+                        </div>
+                       
+                    </div>  
+                </div>
+            </div>
+             <div class="button2">
+          <button type="button" id="next-button" class="buttonBase2" mat-button matStepperNext 
+          (click)="updateNavSelect1()"><span style="color: white;">Next</span></button>
+    </div>
+    <div class="button3">
+      
+         <button type="button" id="back-button" class="buttonBase3" mat-button matStepperPrevious
+         (click)="updateNavSelect()"
+         ><span style="color: black;">Back</span></button>
+        
+    </div>
+            </form>
+</mat-step>
+<mat-step [stepControl]="contactGroup">   
+
+        <form [formGroup]="contactGroup">  
+               <div class="home1">Contact</div> 
+
+            <div class="inputFieldC">
+                <div class="inputFieldBaseC">
+                    <div class="inputFieldBaseC">
+                        <div class="label2">Phone Number</div>
+                        <div class="input">
+                       <input for="phoneNumber" class="noBorderInputs" type="text" id="phoneNumber" name="phoneNumber" formControlName="phoneNumber" />
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inputField1C">
+                <div class="inputFieldBaseC">
+                    <div class="inputFieldBaseC">
+                        <div class="label2">Alternate Phone Number</div>
+                        <div class="input">
+                        <input for="altPhoneNumber" class="noBorderInputs" type="text" id="altPhoneNumber" name="altPhoneNumber" 
+                        formControlName="altPhoneNumber" />
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+            <div class="inputField2C">
+                <div class="inputFieldBase2C">
+                    <div class="inputWithLabel2">
+                        <div class="label2">Email</div>
+                        <div class="input">
+                      <input for="email" class="noBorderInputs" type="email" id="email" name="email" formControlName="email" />
+                       </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mainC">
+                <div class="inputFieldBase2C">
+                    <div class="inputWithLabel2">
+                        <div class="label2">Phone Number Type</div>
+                          <div class="input">
+                       <input for="phoneType" class="noBorderInputs" type="text" id="phoneType" name="phoneType" 
+                       formControlName="phoneType" />
+                    </div>
+                        <!-- <mat-select formControlName="phoneNumberType">
+                            <mat-option value="" disabled selected>Select an option</mat-option>
+                            <mat-option *ngFor="let type of phoneTypes" [value]="type.code">
+                                {{ type.description }}
+                            </mat-option>
+                        </mat-select> -->
+                    </div>
+                </div>
+            </div>
+            <div class="main1C">
+                <div class="inputFieldBase2C">
+                    <div class="inputWithLabel2">
+                        <div class="label2">Phone Number Type</div>
+                          <div class="input">
+                       <input for="altPhoneType" class="noBorderInputs" type="text" id="altPhoneType" name="altPhoneType" 
+                       formControlName="altPhoneType" />
+                       </div>
+                        <!-- <mat-select formControlName="alternatePhoneNumberType">
+                            <mat-option value="" disabled selected>Select an option</mat-option>
+                            <mat-option *ngFor="let type of phoneTypes" [value]="type.code">
+                                {{ type.description }}
+                            </mat-option>
+                        </mat-select> -->
+                    </div>
+                </div>
+            </div>
+            <div class="inputFieldLargeC">
+                <div class="inputFieldBase2C">
+                    <div class="inputWithLabel2">
+                        <div class="label2">Street 2</div>
+                          <div class="input">
+                        <input for="street2" class="noBorderInputs" type="text" id="street2" name="street2" formControlName="street2" />
+                    </div>  
+                    </div>
+                </div>
+            </div>
+            <div class="inputFieldLarge1C">
+                <div class="inputFieldBase2C">
+                    <div class="inputWithLabel2">
+                        <div class="label2">Country<img class="requiredIcon" alt="" src="Required.png" /></div>
+                          <div class="input">
+                       <input for="country" class="noBorderInputs" type="text" id="country" name="country" formControlName="country" />
+                        <!-- <mat-select formControlName="country">
+                            <mat-option value="" disabled selected>Select an option</mat-option>
+                            <mat-option *ngFor="let type of countries" [value]="type.code">
+                                {{ type.description }}
+                            </mat-option>
+                        </mat-select> -->
+                          </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="">Contact</div>
+            <div class="inputFieldLarge2C">
+                <div class="inputFieldBase2C">
+                    <div class="inputWithLabel2">
+                        <div class="label2">Street 1<img class="requiredIcon" alt="" src="Required.png" /></div>
+                          <div class="input">
+                        <input for="street1" class="noBorderInputs" type="text" id="street1" name="street1" formControlName="street1" />
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inputFieldLarge3C">
+                <div class="inputFieldBase2C">
+                    <div class="inputWithLabel2">
+                        <div class="label2">City<img class="requiredIcon" alt="" src="Required.png" /></div>
+                          <div class="input">
+                      <input for="city" class="noBorderInputs" type="text" id="city" name="city" formControlName="city" />
+                          </div>
+                </div>
+            </div>
+            </div>  
+            <div class="main2C">
+                <div class="inputFieldBase2">
+                    <div class="inputWithLabel2">
+                        <div class="label2">Zip<img class="requiredIcon" alt="" src="Required.png" /></div>
+                          <div class="input">
+                        <input for="zip" class="noBorderInputs" type="text" id="zip" name="zip" formControlName="zip" />
+                          </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inputFieldLarge4C">
+                <div class="inputFieldBase2">
+                    <div class="inputWithLabel2">
+                        <div class="label2">State<img class="requiredIcon" alt="" src="Required.png" /></div>
+                          <div class="input">
+                      <input for="state" class="noBorderInputs" type="text" id="state" name="state" formControlName="state" />
+                          </div>
+                    </div>
+                </div>
+            </div>
+            <div class="button2">
+            <button type="button" id="next-button" class="buttonBase2" mat-button matStepperNext 
+            (click)="updateNavSelect2()"><span style="color: white;">Next</span></button>
+            </div>
+            <div class="button3">
+            <button type="button" id="back-button" class="buttonBase3" mat-button matStepperPrevious
+            (click)="updateNavSelect1()"
+            ><span style="color: black;">Back</span></button>
+            </div>
+        </form>
+</mat-step>
+
+<mat-step [stepControl]="householdMembersGroup">
+    <div class="home1">Household Members</div> 
+    <form [formGroup]="householdMembersGroup"> 
+       
+                <div class="inputFieldLarge2C">
+                    <div class="inputWithLabel2C">
+                        <div class="label2">Are there additional household members? <img class="requiredIcon" alt="" src="Required.png" /></div>
+                        <div class="input">
+                            <!-- <div class="content" /> -->
+                        <mat-select formControlName="householdMembers">
+                            <mat-option value="" disabled selected>Select an option</mat-option>
+                            <mat-option value="yes">Yes</mat-option>
+                            <mat-option value="no">No</mat-option>
+                        </mat-select>
+                        </div>
+                        
+                    </div>
+                </div>
+          
+        <div class="button2">
+            <button type="button" id="next-button" class="buttonBase2" mat-button matStepperNext 
+            (click)="updateNavSelect3()"><span style="color: white;">Next</span></button>
+        </div>
+        <div class="button3">
+            <button type="button" id="back-button" class="buttonBase3" mat-button matStepperPrevious
+            (click)="updateNavSelect2()"
+            ><span style="color: black;">Back</span></button>
+        </div>
+    </form>
+</mat-step>
+
+<mat-step [stepControl]="finalizeGroup">
+    <div class="home1">Finalize</div> 
+    <form [formGroup]="finalizeGroup"> 
+       
+                <div class="inputFieldLarge2C">
+                    <div class="inputWithLabel2C">
+                        <div class="label2">Office <span>   <img class="requiredIcon" alt="" src="Required.png" /></span></div> 
+                       <div class="input">                        
+                        <mat-select formControlName="office">
+                            <mat-option value="" disabled selected>Select an option</mat-option>
+                            <mat-option value="yes">Yes</mat-option>
+                            <mat-option value="no">No</mat-option>
+                        </mat-select>
+                        </div>
+                         
+                    </div>
+                </div>
+          
+      <div class="button2">
+            <button type="submit" id="next-button" class="buttonBase2" mat-button><span style="color: white;">Submit</span></button>
+            </div>
+            <div class="button3">
+            <button type="button" id="close-button" class="buttonBase3" (click)="goBack()"><span style="color: black;">Close</span></button>
+            </div>
+    </form>
+</mat-step>
+
+</mat-stepper>
+
+</div>
