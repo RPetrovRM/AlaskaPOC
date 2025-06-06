@@ -1,4 +1,4 @@
-import { Component, inject,signal } from '@angular/core';
+import { Component, inject,signal, DestroyRef } from '@angular/core';
 import { FormsModule, NgForm,  FormBuilder, FormGroupDirective, Validators, ValidatorFn, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import moment from 'moment';
@@ -7,19 +7,23 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatStepper, MatStepperModule, MatStepperNext} from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
-import { CommonModule, NgClass, NgFor } from '@angular/common';
+import { CommonModule, NgClass, NgFor, NgIf } from '@angular/common';
   import { type Applicant } from '../application-registration/applicant.model';
+  import { RegisterService } from '../services/register.service';
+import { pluck } from 'rxjs';
 
 @Component({
   selector: 'app-ra-applicant-details',
   imports: [ ReactiveFormsModule, FormsModule, MatInputModule, MatFormFieldModule,
-     MatStepperModule, MatStepper, MatStepperNext, MatSelectModule, MatOptionModule, CommonModule, NgClass, NgFor],
+     MatStepperModule, MatStepper, MatStepperNext, MatSelectModule, MatOptionModule, CommonModule, NgClass, NgFor ],
   standalone: true,
   templateUrl: './ra-applicant-details.component.html',
   styleUrl: './ra-applicant-details.component.css'
 })
 export class RaApplicantDetailsComponent  {
   private router = inject(Router);
+  private registerService = inject(RegisterService);  
+  private destroyRef = inject(DestroyRef);
   date: Date = new Date();
     searchPageDate: string =moment(this.date).format('MMMM DD YYYY hh:mm A');    
   private _formBuilder = inject(FormBuilder);
@@ -29,12 +33,10 @@ export class RaApplicantDetailsComponent  {
   householdClicked = signal(false);  
   finalizeClicked = signal(false);  
   closeClicked = false;
+  successfulSubmission = false;
   
-
    suffixes = [{value: 'II'}, {value: 'Jr'}, {value: 'I'}, 
       {value: 'ESQ'}, {value: 'III'}, {value: 'IV'}, {value: 'Sr'}];
-
-
  
   noDisplay  = {
     'display':'block'
@@ -43,7 +45,8 @@ export class RaApplicantDetailsComponent  {
   appDetailsGroup= this._formBuilder.group({ 
     applicationType: [''],
     programType: [''],
-    applicationDate: ['']   
+    applicationDate: [''] ,
+    id: [''],  
   });
 
    primaryIndividualGroup= this._formBuilder.group({ 
@@ -81,24 +84,96 @@ export class RaApplicantDetailsComponent  {
   updateNavSelect(){
     this.applicantOn.set(false);
     this.primaryClicked.set(true);
+ const registerForm = this.appDetailsGroup.value as Applicant    
+   // console.log(registerForm);
+         if (registerForm.appDate !== null){                    
+                let returnData = this.registerService.saveApplicant(registerForm);
+    
+                let responseData = returnData
+                .pipe(pluck("status"))
+                .subscribe((r: string) => {   
+                  console.log(r);       
+                 
+                });
+    
+                this.destroyRef.onDestroy(() => {
+                  responseData.unsubscribe();
+                });
+          }
+    
+
   }
    updateNavSelect1(){
     this.primaryClicked.set(false);
     this.contactClicked.set(true);
+
+     const registerForm = this.primaryIndividualGroup.value as Applicant    
+   // console.log(registerForm);
+         if (registerForm.firstName !== '' ||
+          registerForm.lastName !== ''){                    
+                let returnData = this.registerService.saveApplicant(registerForm);
+    
+                let responseData = returnData
+                .pipe(pluck("status"))
+                .subscribe((r: string) => {   
+                  console.log(r);       
+                  
+                });
+    
+                this.destroyRef.onDestroy(() => {
+                  responseData.unsubscribe();
+                });
+          }
+    
   }
      updateNavSelect2(){
     this.householdClicked.set(true);
     this.contactClicked.set(false);
+
+     const registerForm = this.contactGroup.value as Applicant    
+   // console.log(registerForm);
+         if (registerForm.street1 !== '' ){                    
+                let returnData = this.registerService.saveApplicant(registerForm);
+    
+                let responseData = returnData
+                .pipe(pluck("status"))
+                .subscribe((r: string) => {   
+                  console.log(r);       
+                
+                });
+    
+                this.destroyRef.onDestroy(() => {
+                  responseData.unsubscribe();
+                });
+          }
+    
   }
      updateNavSelect3(){
     this.householdClicked.set(false);
     this.finalizeClicked.set(true);
+    
+     const registerForm = this.householdMembersGroup.value as Applicant    
+   // console.log(registerForm);
+         if (registerForm.additionalHouseholdMembers !== null){                    
+                let returnData = this.registerService.saveApplicant(registerForm);
+    
+                let responseData = returnData
+                .pipe(pluck("status"))
+                .subscribe((r: string) => {   
+                  console.log(r); 
+                });
+    
+                this.destroyRef.onDestroy(() => {
+                  responseData.unsubscribe();
+                });
+          }
+    
   }
 
 
 ngOnInit(): void {   
     const applicant = history.state['applicant'];
-    console.log(applicant); 
+   // console.log(applicant); 
     const data = JSON.parse(applicant) as Applicant;
     
     if (data.id !== undefined){   
@@ -119,6 +194,7 @@ ngOnInit(): void {
       const dateApp = new Date(data.appDate);
       const dateAppFormatted = moment(dateApp).format('yyyy-MM-DD');
     this.appDetailsGroup= this._formBuilder.group({ 
+      id: data.id?.toString(),
       applicationType: data.appType,
       programType:data.programType,
       applicationDate: dateAppFormatted
@@ -147,9 +223,26 @@ ngOnInit(): void {
       }
 }
   
-  onSubmit(form: NgForm) {
+ // onSubmit(form: NgForm) {
+ onSubmit(): void{
     // Handle form submission logic her
-    console.log(form.value);
+    const registerForm = this.finalizeGroup.value as Applicant    
+   // console.log(registerForm);
+         if (registerForm.office !== '' ){                    
+                let returnData = this.registerService.saveApplicant(registerForm);
+    
+                let responseData = returnData
+                .pipe(pluck("status"))
+                .subscribe((r: string) => {   
+                  console.log(r);       
+                   this.successfulSubmission = true;
+                });
+    
+                this.destroyRef.onDestroy(() => {
+                  responseData.unsubscribe();
+                });
+          }
+    
   }
 
   goBack() {

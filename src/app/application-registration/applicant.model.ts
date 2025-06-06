@@ -14,7 +14,7 @@ export interface Applicant {
     altPhoneNumber?: string;
     altPhoneType?: string;  
     email: string;
-    id: number;
+    id: string;
     lastUpdated: string;
     dateOfBirth: string;
     appType: string;
