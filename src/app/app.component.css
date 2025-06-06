@@ -332,7 +332,7 @@
     left: 0px;
     background-color: #fff;
     width: 241px;
-    height: 981px;
+    height: 650px;
     overflow: hidden;
 }
 
@@ -532,7 +532,7 @@
 
 .button1 {
     position: absolute;
-    top: 902px;
+    top: 780px;
     left: 1181px;
     border-radius: 8px;
     width: 120px;
@@ -547,7 +547,7 @@
     width: 100%;
     position: relative;
     background-color: #f4f4f4;
-    height: 983px;
+    height:820;
     overflow: hidden;
     text-align: left;
     font-size: 14px;

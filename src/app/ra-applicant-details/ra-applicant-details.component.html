@@ -70,6 +70,7 @@
             <form [formGroup]="appDetailsGroup">               
                  <div class="home1">Applicant Details</div> 
     <div class="main">
+        <input type="hidden" for="id" id="id" name="id" formControlName="id" />
         <div class="inputFieldBase">
             <div class="inputWithLabel">
                 <div >Application Type</div>
@@ -381,7 +382,7 @@
 
 <mat-step [stepControl]="householdMembersGroup">
     <div class="home1">Household Members</div> 
-    <form [formGroup]="householdMembersGroup">        
+    <form [formGroup]="householdMembersGroup">        ';li'
                 <div class="inputFieldLarge2C">
                     <div class="inputWithLabel2C">
                         <div class="label2">Are there additional household members? <img class="requiredIcon" alt="" src="Required.png" /></div>
@@ -410,11 +411,20 @@
 
 <mat-step [stepControl]="finalizeGroup">
     <div class="home1">Finalize</div> 
+    
     <form [formGroup]="finalizeGroup"> 
-       
+      
                 <div class="inputFieldLarge2C">
+
+                    
+                          @if(successfulSubmission) {
+       <div class="label2"> <div style="color: green;" ><p>Application has been successfully submitted!
+                         </div></div>
+     } 
+
                     <div class="inputWithLabel2C">
                         <div class="label2"> Office &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="requiredIcon" alt="required field" src="Required.png" /> </div>
+
                        <div class="input">                        
                         <mat-select formControlName="office">
                             <mat-option value="" disabled selected>Select an office</mat-option>
@@ -427,9 +437,8 @@
                     </div>
                 </div>
                   
-          
       <div class="button2">
-            <button type="submit" id="next-button" class="buttonBase2" mat-button><span style="color: white;">Submit</span></button>
+            <button type="submit" id="next-button" class="buttonBase2" mat-button (click)="onSubmit()"><span style="color: white;">Submit</span></button>
             </div>
             <div class="button3">
             <button type="button" id="close-button" class="buttonBase3" (click)="goBack()"><span style="color: black;">Close</span></button>
