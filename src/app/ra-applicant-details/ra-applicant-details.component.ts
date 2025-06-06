@@ -97,24 +97,22 @@ ngOnInit(): void {
     
 
     if (data.id !== undefined){   
-      let genderValue = '';
-      (data.gender === '') ? genderValue = '' : (data.gender === "M")?  genderValue = "1" : genderValue = "2" ; 
-       console.log(data);
+      // console.log(data);
       const birthDate = new Date(data.dateOfBirth);
-      const birthDateFormatted = moment(birthDate).format('MM/DD/YYYY');
+      const birthDateFormatted = moment(birthDate).format('yyyy-MM-DD');
       this.primaryIndividualGroup.setValue({
         firstName: data.firstName,
         lastName: data.lastName,
         middleName: data.middleName,
         title: data.title,
-        gender: genderValue,
+        gender: data.gender,
         suffix: data.suffix || '',
         dateOfBirth: birthDateFormatted,
         lastNameAtBirth: data.birthLastName
       });
 
       const dateApp = new Date(data.appDate);
-      const dateAppFormatted = moment(dateApp).format('MM/DD/YYYY');
+      const dateAppFormatted = moment(dateApp).format('yyyy-MM-DD');
     let appDetailsGroup= this._formBuilder.group({ 
       applicationType: data.appType,
       programType:data.programType,
@@ -135,10 +133,10 @@ ngOnInit(): void {
           email: data.email || ''
         });
         this.householdMembersGroup.setValue({
-          householdMembers: data.additionalHouseholdMembers === true? 'Yes' : 'No'
+          householdMembers: data.additionalHouseholdMembers === true? 'Y' : 'N'
         });
         this.finalizeGroup.setValue({
-          office: data.office || 'No'
+          office: data.office || 'Juneau'
         });
 
       }
