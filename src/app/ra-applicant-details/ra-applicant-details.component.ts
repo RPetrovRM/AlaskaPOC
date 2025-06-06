@@ -113,7 +113,7 @@ ngOnInit(): void {
 
       const dateApp = new Date(data.appDate);
       const dateAppFormatted = moment(dateApp).format('yyyy-MM-DD');
-    let appDetailsGroup= this._formBuilder.group({ 
+    this.appDetailsGroup= this._formBuilder.group({ 
       applicationType: data.appType,
       programType:data.programType,
       applicationDate: dateAppFormatted
