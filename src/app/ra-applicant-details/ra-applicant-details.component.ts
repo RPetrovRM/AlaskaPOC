@@ -7,13 +7,13 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatStepper, MatStepperModule, MatStepperNext} from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
-import { CommonModule, NgClass } from '@angular/common';
+import { CommonModule, NgClass, NgFor } from '@angular/common';
   import { type Applicant } from '../application-registration/applicant.model';
 
 @Component({
   selector: 'app-ra-applicant-details',
   imports: [ ReactiveFormsModule, FormsModule, MatInputModule, MatFormFieldModule,
-     MatStepperModule, MatStepper, MatStepperNext, MatSelectModule, MatOptionModule, CommonModule, NgClass],
+     MatStepperModule, MatStepper, MatStepperNext, MatSelectModule, MatOptionModule, CommonModule, NgClass, NgFor],
   standalone: true,
   templateUrl: './ra-applicant-details.component.html',
   styleUrl: './ra-applicant-details.component.css'
@@ -29,6 +29,12 @@ export class RaApplicantDetailsComponent  {
   householdClicked = signal(false);  
   finalizeClicked = signal(false);  
   closeClicked = false;
+  
+
+   suffixes = [{value: 'II'}, {value: 'Jr'}, {value: 'I'}, 
+      {value: 'ESQ'}, {value: 'III'}, {value: 'IV'}, {value: 'Sr'}];
+
+
  
   noDisplay  = {
     'display':'block'
@@ -95,7 +101,6 @@ ngOnInit(): void {
     console.log(applicant); 
     const data = JSON.parse(applicant) as Applicant;
     
-
     if (data.id !== undefined){   
       // console.log(data);
       const birthDate = new Date(data.dateOfBirth);
