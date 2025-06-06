@@ -3,6 +3,17 @@ export interface Applicant {
     firstName: string;
     middleName: string;
     lastName: string;
+    street1: string;
+    street2?: string;
+    city: string;
+    state: string;
+    zip: string;
+    country: string;
+    phoneNumber: string;
+    phoneType: string;
+    altPhoneNumber?: string;
+    altPhoneType?: string;  
+    email: string;
     id: number;
     lastUpdated: string;
     dateOfBirth: string;

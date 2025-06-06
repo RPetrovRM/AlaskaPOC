@@ -13,7 +13,7 @@ import { CommonModule, NgClass } from '@angular/common';
 @Component({
   selector: 'app-ra-applicant-details',
   imports: [ ReactiveFormsModule, FormsModule, MatInputModule, MatFormFieldModule,
-     MatStepperModule, MatSelectModule, MatOptionModule, CommonModule, NgClass],
+     MatStepperModule, MatStepper, MatStepperNext, MatSelectModule, MatOptionModule, CommonModule, NgClass],
   standalone: true,
   templateUrl: './ra-applicant-details.component.html',
   styleUrl: './ra-applicant-details.component.css'
@@ -29,12 +29,10 @@ export class RaApplicantDetailsComponent  {
   householdClicked = signal(false);  
   finalizeClicked = signal(false);  
   closeClicked = false;
-   applicant: Applicant[] = [];
  
   noDisplay  = {
     'display':'block'
 };
-
 
   appDetailsGroup= this._formBuilder.group({ 
     applicationType: [''],
@@ -92,14 +90,56 @@ export class RaApplicantDetailsComponent  {
   }
 
 
-ngOnInit(): void {  
-  //  this.route.params.subscribe(params => { 
-  //      let applicant = params['applicant'];
-  //      console.log(applicant);
-  //  });;
-  // console.log(history.state);   
-    this.applicant = history.state['applicant'];
-    console.log(this.applicant); 
+ngOnInit(): void {   
+    const applicant = history.state['applicant'];
+    console.log(applicant); 
+    const data = JSON.parse(applicant) as Applicant;
+    
+
+    if (data.id !== undefined){   
+      // console.log(data);
+      const birthDate = new Date(data.dateOfBirth);
+      const birthDateFormatted = moment(birthDate).format('yyyy-MM-DD');
+      this.primaryIndividualGroup.setValue({
+        firstName: data.firstName,
+        lastName: data.lastName,
+        middleName: data.middleName,
+        title: data.title,
+        gender: data.gender,
+        suffix: data.suffix || '',
+        dateOfBirth: birthDateFormatted,
+        lastNameAtBirth: data.birthLastName
+      });
+
+      const dateApp = new Date(data.appDate);
+      const dateAppFormatted = moment(dateApp).format('yyyy-MM-DD');
+    let appDetailsGroup= this._formBuilder.group({ 
+      applicationType: data.appType,
+      programType:data.programType,
+      applicationDate: dateAppFormatted
+    });
+
+        this.contactGroup.setValue({
+          street1: data.street1 || '',
+          street2: data.street2 || '',
+          city: data.city || '',
+          state: data.state || '',
+          zip: data.zip || '',
+          country: data.country || '',
+          phoneNumber: data.phoneNumber || '',
+          phoneType: data.phoneType || '',
+          altPhoneNumber: data.altPhoneNumber || '',
+          altPhoneType: data.altPhoneType || '',
+          email: data.email || ''
+        });
+        this.householdMembersGroup.setValue({
+          householdMembers: data.additionalHouseholdMembers === true? 'Y' : 'N'
+        });
+        this.finalizeGroup.setValue({
+          office: data.office || 'Juneau'
+        });
+
+      }
 }
   
   onSubmit(form: NgForm) {

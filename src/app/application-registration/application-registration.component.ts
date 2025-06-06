@@ -24,7 +24,9 @@ export class ApplicationRegistrationComponent {
   searchPageDate: string =moment(this.date).format('MMMM DD YYYY hh:mm A');
   closeClicked = false;
   private destroyRef = inject(DestroyRef);
-  noDisplay  = {
+ private emptyApplicant: Applicant[] = [];
+
+    noDisplay  = {
     'display':'block'
 };
 
@@ -40,20 +42,27 @@ export class ApplicationRegistrationComponent {
   onSubmit(form: NgForm) {    
     //console.log(form.value);
      let searchForm = form.value as Applicant;  
+     if ((searchForm.appNumber !== null &&  String(searchForm.appNumber) !== '') || searchForm.firstName !== '' ||
+      searchForm.lastName !== ''){
+                
+            let returnData = this.registerService.searchBy(searchForm)
+            .pipe(pluck("applicant"));
 
-    let returnData = this.registerService.searchBy(searchForm)
-    .pipe(pluck("applicant"));
+            let responseData = returnData
+            .subscribe((r: Applicant[]) => {   
+              //console.log(r);              
+                this.sendToRegisterApplication(r);
+               
+            });
 
-    let responseData = returnData
-    .subscribe((r: Applicant[]) => {   
-      console.log(r); 
-      this.sendToRegisterApplication(r);
-    });
-
-    this.destroyRef.onDestroy(() => {
-      responseData.unsubscribe();
-    });
-
+            this.destroyRef.onDestroy(() => {
+              responseData.unsubscribe();
+            });
+      }
+      else
+       {
+              this.sendToRegisterApplication(this.emptyApplicant); // send empty array if no data found
+       }
 }
 
   goBack() {

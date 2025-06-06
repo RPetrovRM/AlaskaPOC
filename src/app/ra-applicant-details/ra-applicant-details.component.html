@@ -76,7 +76,7 @@
                 <div class="input">
                     <!-- <div class="content"></div> -->
                       <input for="applicationType" class="noBorderInputs" type="text" id="applicationType" name="applicationType" formControlName="applicationType" />
-                    <img class="icon" alt="" src="/Icon.png" />
+                   
                 </div>
             </div>
         </div>
@@ -88,7 +88,7 @@
                 <div class="input">
                     <!-- <div class="content"></div> -->
                       <input for="programType" class="noBorderInputs" type="text" id="programType" name="programType" formControlName="programType" />
-                    <img class="icon" alt="" src="/Icon.png" />
+                   
                 </div>
             </div>
         </div>
@@ -98,7 +98,8 @@
             <div class="inputWithLabel">
                 <div >Application Date</div>
                 <div class="input2">
-                  <input for="applicationDate" class="noBorderInputs" type="date" id="applicationDate" name="applicationDate" formControlName="applicationDate" />
+                  <input for="applicationDate" class="noBorderInputs" type="date"
+                   id="applicationDate" name="applicationDate" formControlName="applicationDate"  />
                 </div>
             </div>
            
@@ -125,7 +126,7 @@
                         <div class="input">
                             <!-- <div class="content" /> -->
                              <input for="firstName" class="noBorderInputs" type="text" id="firstName" name="firstName" formControlName="firstName" />
-                                <img class="icon" alt="" src="/Icon.png" />
+                               
                         </div>
                     </div>
                 </div>
@@ -211,16 +212,14 @@
             <div class="main4">
                 <div class="inputFieldBase">
                     <div class="inputWithLabel">
-                        <div class="label2">Gender  <img class="requiredIcon" alt="" src="Required.png" /></div>
-                        <div class="input">
-                            <!-- <div class="content" /> -->
+                        <div class="label2">Gender  <img class="requiredIcon" alt="" src="Required.png" /></div>  
+                        <div class="input">                                              
                         <mat-select formControlName="gender">
-                            <mat-option value="" disabled selected>Select an option</mat-option>
-                            <mat-option value="female">Female</mat-option>
-                            <mat-option value="male">Male</mat-option>
+                            <mat-option value="" disabled selected >Select an option</mat-option>
+                            <mat-option value="F">Female</mat-option>
+                            <mat-option value="M">Male</mat-option>
                         </mat-select>
-                        </div>
-                       
+                              </div>                    
                     </div>  
                 </div>
             </div>
@@ -237,11 +236,9 @@
     </div>
             </form>
 </mat-step>
-<mat-step [stepControl]="contactGroup">   
-
+<mat-step [stepControl]="contactGroup"> 
         <form [formGroup]="contactGroup">  
                <div class="home1">Contact</div> 
-
             <div class="inputFieldC">
                 <div class="inputFieldBaseC">
                     <div class="inputFieldBaseC">
@@ -279,15 +276,13 @@
                     <div class="inputWithLabel2">
                         <div class="label2">Phone Number Type</div>
                           <div class="input">
-                       <input for="phoneType" class="noBorderInputs" type="text" id="phoneType" name="phoneType" 
-                       formControlName="phoneType" />
-                    </div>
-                        <!-- <mat-select formControlName="phoneNumberType">
+                        <mat-select formControlName="phoneType">
                             <mat-option value="" disabled selected>Select an option</mat-option>
-                            <mat-option *ngFor="let type of phoneTypes" [value]="type.code">
-                                {{ type.description }}
-                            </mat-option>
-                        </mat-select> -->
+                            <mat-option value="Cell">Cell</mat-option>
+                            <mat-option value="Home">Home</mat-option>  
+                            <mat-option value="Work">Work</mat-option>
+                        </mat-select>
+                           </div>
                     </div>
                 </div>
             </div>
@@ -296,15 +291,13 @@
                     <div class="inputWithLabel2">
                         <div class="label2">Phone Number Type</div>
                           <div class="input">
-                       <input for="altPhoneType" class="noBorderInputs" type="text" id="altPhoneType" name="altPhoneType" 
-                       formControlName="altPhoneType" />
-                       </div>
-                        <!-- <mat-select formControlName="alternatePhoneNumberType">
+                          <mat-select formControlName="phoneType">
                             <mat-option value="" disabled selected>Select an option</mat-option>
-                            <mat-option *ngFor="let type of phoneTypes" [value]="type.code">
-                                {{ type.description }}
-                            </mat-option>
-                        </mat-select> -->
+                            <mat-option value="Cell">Cell</mat-option>
+                            <mat-option value="Home">Home</mat-option>  
+                            <mat-option value="Work">Work</mat-option>
+                        </mat-select>
+                           </div>
                     </div>
                 </div>
             </div>
@@ -334,8 +327,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="">Contact</div>
             <div class="inputFieldLarge2C">
                 <div class="inputFieldBase2C">
                     <div class="inputWithLabel2">
@@ -390,17 +381,15 @@
 
 <mat-step [stepControl]="householdMembersGroup">
     <div class="home1">Household Members</div> 
-    <form [formGroup]="householdMembersGroup"> 
-       
+    <form [formGroup]="householdMembersGroup">        
                 <div class="inputFieldLarge2C">
                     <div class="inputWithLabel2C">
                         <div class="label2">Are there additional household members? <img class="requiredIcon" alt="" src="Required.png" /></div>
-                        <div class="input">
-                            <!-- <div class="content" /> -->
+                        <div class="input">                         
                         <mat-select formControlName="householdMembers">
-                            <mat-option value="" disabled selected>Select an option</mat-option>
-                            <mat-option value="yes">Yes</mat-option>
-                            <mat-option value="no">No</mat-option>
+                            <mat-option value="" disabled selected  >Select an option</mat-option>
+                            <mat-option value="Y">Yes</mat-option>
+                            <mat-option value="N">No</mat-option>
                         </mat-select>
                         </div>
                         
@@ -425,17 +414,19 @@
        
                 <div class="inputFieldLarge2C">
                     <div class="inputWithLabel2C">
-                        <div class="label2">Office <span>   <img class="requiredIcon" alt="" src="Required.png" /></span></div> 
+                        <div class="label2"> Office &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="requiredIcon" alt="required field" src="Required.png" /> </div>
                        <div class="input">                        
                         <mat-select formControlName="office">
-                            <mat-option value="" disabled selected>Select an option</mat-option>
-                            <mat-option value="yes">Yes</mat-option>
-                            <mat-option value="no">No</mat-option>
+                            <mat-option value="" disabled selected>Select an office</mat-option>
+                            <mat-option value="Anchorage">Anchorage</mat-option>
+                            <mat-option value="Fairbanks">Fairbanks</mat-option>
+                            <mat-option value="Juneau">Juneau</mat-option>
                         </mat-select>
                         </div>
                          
                     </div>
                 </div>
+                  
           
       <div class="button2">
             <button type="submit" id="next-button" class="buttonBase2" mat-button><span style="color: white;">Submit</span></button>
