@@ -366,6 +366,7 @@
     width: 241px;
     height: 880px;
     overflow: hidden;
+    transition: width 0.3s;
 }
 
 .label {
