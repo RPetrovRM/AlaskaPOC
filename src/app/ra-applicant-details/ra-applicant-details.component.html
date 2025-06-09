@@ -70,7 +70,6 @@
             <form [formGroup]="appDetailsGroup">               
                  <div class="home1">Applicant Details</div> 
     <div class="main">
-        <input type="hidden" for="id" id="id" name="id" formControlName="id" />
         <div class="inputFieldBase">
             <div class="inputWithLabel">
                 <div >Application Type</div>
@@ -152,8 +151,7 @@
                         <mat-select formControlName="title">
                             <mat-option value="Mr">Mr</mat-option>
                             <mat-option value="Ms">Ms</mat-option>
-                            <mat-option value="Dr">Dr</mat-option>
-                            <mat-option value="Revd">Revd</mat-option>
+                            <mat-option value="Mrs">Mrs</mat-option>
                         </mat-select>                         
                         </div>
                     </div>
@@ -177,10 +175,11 @@
                         <div class="input">
                          <!-- <mat-label>Suffix</mat-label> -->
                         <mat-select formControlName="suffix">
-                           
-                            <mat-option value="" disabled selected>Select an option</mat-option>
-           
-                            <mat-option *ngFor="let suffix of this.suffixes" [value]="suffix.value">{{ suffix.value }}</mat-option>
+                            <mat-option value="Jr.">Jr.</mat-option>
+                            <mat-option value="Sr.">Sr.</mat-option>
+                            <mat-option value="I">I</mat-option>
+                            <mat-option value="II">II</mat-option>
+                            <mat-option value="III">III</mat-option>
                         </mat-select>
                         </div>
                     </div>
@@ -206,6 +205,10 @@
                        <input for="dateOfBirth" class="noBorderInputs" type="date" id="dateOfBirth" name="dateOfBirth" formControlName="dateOfBirth" />
                        
                          </div>
+                         <div *ngIf="primaryIndividualGroup.get('dateOfBirth')?.invalid && (primaryIndividualGroup.get('dateOfBirth')?.touched || primaryIndividualGroup.get('dateOfBirth')?.dirty)" class="error-message">
+                            {{ getErrorMessage('dateOfBirth', primaryIndividualGroup) }}
+                        </div> 
+
                     </div>
                 </div>
             </div>
@@ -220,7 +223,10 @@
                             <mat-option value="F">Female</mat-option>
                             <mat-option value="M">Male</mat-option>
                         </mat-select>
-                              </div>                    
+                              </div>   
+                        <div *ngIf="primaryIndividualGroup.get('gender')?.invalid && (primaryIndividualGroup.get('gender')?.touched || primaryIndividualGroup.get('gender')?.dirty)" class="error-message">
+                            {{ getErrorMessage('gender', primaryIndividualGroup) }}
+                        </div>                       
                     </div>  
                 </div>
             </div>
@@ -279,9 +285,9 @@
                           <div class="input">
                         <mat-select formControlName="phoneType">
                             <mat-option value="" disabled selected>Select an option</mat-option>
-                           <mat-option value="cell">Cell</mat-option>
-                            <mat-option value="landLine">Landline</mat-option>  
-                            <mat-option value="office">Office</mat-option>
+                            <mat-option value="Cell">Cell</mat-option>
+                            <mat-option value="Home">Home</mat-option>  
+                            <mat-option value="Work">Work</mat-option>
                         </mat-select>
                            </div>
                     </div>
@@ -294,9 +300,9 @@
                           <div class="input">
                           <mat-select formControlName="phoneType">
                             <mat-option value="" disabled selected>Select an option</mat-option>
-                            <mat-option value="cell">Cell</mat-option>
-                            <mat-option value="landLine">Landline</mat-option>  
-                            <mat-option value="office">Office</mat-option>
+                            <mat-option value="Cell">Cell</mat-option>
+                            <mat-option value="Home">Home</mat-option>  
+                            <mat-option value="Work">Work</mat-option>
                         </mat-select>
                            </div>
                     </div>
@@ -325,6 +331,9 @@
                             </mat-option>
                         </mat-select> -->
                           </div>
+                          <div *ngIf="contactGroup.get('country')?.invalid && (contactGroup.get('country')?.touched || contactGroup.get('country')?.dirty)" class="error-message">
+                            {{ getErrorMessage('country', contactGroup) }}
+                        </div> 
                     </div>
                 </div>
             </div>
@@ -335,6 +344,9 @@
                           <div class="input">
                         <input for="street1" class="noBorderInputs" type="text" id="street1" name="street1" formControlName="street1" />
                     </div>
+                    <div *ngIf="contactGroup.get('street1')?.invalid && (contactGroup.get('street1')?.touched || contactGroup.get('street1')?.dirty)" class="error-message">
+                            {{ getErrorMessage('street1', contactGroup) }}
+                        </div> 
                     </div>
                 </div>
             </div>
@@ -345,6 +357,9 @@
                           <div class="input">
                       <input for="city" class="noBorderInputs" type="text" id="city" name="city" formControlName="city" />
                           </div>
+                          <div *ngIf="contactGroup.get('city')?.invalid && (contactGroup.get('city')?.touched || contactGroup.get('city')?.dirty)" class="error-message">
+                            {{ getErrorMessage('city', contactGroup) }}
+                        </div> 
                 </div>
             </div>
             </div>  
@@ -355,6 +370,9 @@
                           <div class="input">
                         <input for="zip" class="noBorderInputs" type="text" id="zip" name="zip" formControlName="zip" />
                           </div>
+                          <div *ngIf="contactGroup.get('zip')?.invalid && (contactGroup.get('zip')?.touched || contactGroup.get('zip')?.dirty)" class="error-message">
+                            {{ getErrorMessage('zip', contactGroup) }}
+                        </div> 
                     </div>
                 </div>
             </div>
@@ -365,6 +383,9 @@
                           <div class="input">
                       <input for="state" class="noBorderInputs" type="text" id="state" name="state" formControlName="state" />
                           </div>
+                          <div *ngIf="contactGroup.get('state')?.invalid && (contactGroup.get('state')?.touched || contactGroup.get('state')?.dirty)" class="error-message">
+                            {{ getErrorMessage('state', contactGroup) }}
+                        </div> 
                     </div>
                 </div>
             </div>
@@ -382,7 +403,7 @@
 
 <mat-step [stepControl]="householdMembersGroup">
     <div class="home1">Household Members</div> 
-    <form [formGroup]="householdMembersGroup">        ';li'
+    <form [formGroup]="householdMembersGroup">        
                 <div class="inputFieldLarge2C">
                     <div class="inputWithLabel2C">
                         <div class="label2">Are there additional household members? <img class="requiredIcon" alt="" src="Required.png" /></div>
@@ -393,7 +414,9 @@
                             <mat-option value="N">No</mat-option>
                         </mat-select>
                         </div>
-                        
+                        <div *ngIf="householdMembersGroup.get('householdMembers')?.invalid && (householdMembersGroup.get('householdMembers')?.touched || householdMembersGroup.get('householdMembers')?.dirty)" class="error-message">
+                            {{ getErrorMessage('householdMembers', householdMembersGroup) }}
+                        </div> 
                     </div>
                 </div>
           
@@ -411,20 +434,11 @@
 
 <mat-step [stepControl]="finalizeGroup">
     <div class="home1">Finalize</div> 
-    
     <form [formGroup]="finalizeGroup"> 
-      
+       
                 <div class="inputFieldLarge2C">
-
-                    
-                          @if(successfulSubmission) {
-       <div class="label2"> <div style="color: green;" ><p>Application has been successfully submitted!
-                         </div></div>
-     } 
-
                     <div class="inputWithLabel2C">
                         <div class="label2"> Office &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="requiredIcon" alt="required field" src="Required.png" /> </div>
-
                        <div class="input">                        
                         <mat-select formControlName="office">
                             <mat-option value="" disabled selected>Select an office</mat-option>
@@ -433,12 +447,15 @@
                             <mat-option value="Juneau">Juneau</mat-option>
                         </mat-select>
                         </div>
-                         
+                        <div *ngIf="finalizeGroup.get('office')?.invalid && (finalizeGroup.get('office')?.touched || finalizeGroup.get('office')?.dirty)" class="error-message">
+                            {{ getErrorMessage('office', finalizeGroup) }}
+                        </div>  
                     </div>
                 </div>
                   
+          
       <div class="button2">
-            <button type="submit" id="next-button" class="buttonBase2" mat-button (click)="onSubmit()"><span style="color: white;">Submit</span></button>
+            <button type="submit" id="next-button" class="buttonBase2" mat-button><span style="color: white;">Submit</span></button>
             </div>
             <div class="button3">
             <button type="button" id="close-button" class="buttonBase3" (click)="goBack()"><span style="color: black;">Close</span></button>

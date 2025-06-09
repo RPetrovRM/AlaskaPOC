@@ -1,5 +1,5 @@
 import { Component, inject,signal, DestroyRef } from '@angular/core';
-import { FormsModule, NgForm,  FormBuilder, FormGroupDirective, Validators, ValidatorFn, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgForm,  FormBuilder, FormGroupDirective, Validators, ValidatorFn, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import moment from 'moment';
 import {ErrorStateMatcher, MatOptionModule} from '@angular/material/core';
@@ -54,19 +54,19 @@ export class RaApplicantDetailsComponent  {
     lastName: [''],
     middleName: [''],
     title: [''],
-    gender: [''],    
+    gender: ['', Validators.required],    
     suffix: [''],
-    dateOfBirth: [''],
+    dateOfBirth: ['', Validators.required],
     lastNameAtBirth: [''],    
   });
   
    contactGroup= this._formBuilder.group({ 
-    street1: [''],
+    street1: ['', Validators.required],
     street2: [''],
-    city: [''],
-    state: [''],
-    zip: [''],    
-    country: [''],
+    city: ['', Validators.required],
+    state: ['', Validators.required],
+    zip: ['', Validators.required],    
+    country: ['', Validators.required],
     phoneNumber: [''],
     phoneType: [''],   
     altPhoneNumber: [''],
@@ -75,13 +75,17 @@ export class RaApplicantDetailsComponent  {
   });
 
   householdMembersGroup= this._formBuilder.group({
-    householdMembers: [''] 
+    householdMembers: ['', Validators.required], 
   });
   finalizeGroup= this._formBuilder.group({
-    office: [''] 
+    office: ['', Validators.required], 
   });
 
   updateNavSelect(){
+    if (this.appDetailsGroup.invalid) {
+      this.appDetailsGroup.markAllAsTouched();
+      return;
+    }
     this.applicantOn.set(false);
     this.primaryClicked.set(true);
  const registerForm = this.appDetailsGroup.value as Applicant    
@@ -104,6 +108,10 @@ export class RaApplicantDetailsComponent  {
 
   }
    updateNavSelect1(){
+    if (this.primaryIndividualGroup.invalid) {
+      this.primaryIndividualGroup.markAllAsTouched();
+      return;
+    }
     this.primaryClicked.set(false);
     this.contactClicked.set(true);
 
@@ -127,6 +135,10 @@ export class RaApplicantDetailsComponent  {
     
   }
      updateNavSelect2(){
+      if (this.contactGroup.invalid) {
+      this.contactGroup.markAllAsTouched();
+      return;
+    }
     this.householdClicked.set(true);
     this.contactClicked.set(false);
 
@@ -149,6 +161,10 @@ export class RaApplicantDetailsComponent  {
     
   }
      updateNavSelect3(){
+      if (this.householdMembersGroup.invalid) {
+      this.householdMembersGroup.markAllAsTouched();
+      return;
+    }
     this.householdClicked.set(false);
     this.finalizeClicked.set(true);
     
@@ -225,6 +241,10 @@ ngOnInit(): void {
   
  // onSubmit(form: NgForm) {
  onSubmit(): void{
+    if (this.finalizeGroup.invalid) {
+      this.finalizeGroup.markAllAsTouched();
+      return;
+    }
     // Handle form submission logic her
     const registerForm = this.finalizeGroup.value as Applicant    
    // console.log(registerForm);
@@ -263,6 +283,21 @@ ngOnInit(): void {
         'display': 'block'
       };
     }
+  }
+
+  getErrorMessage(controlName: string, group: FormGroup): string {
+    const control = group.get(controlName);
+    if (control?.hasError('required')) {
+      return 'This field is required.';
+    }
+    if (control?.hasError('minlength')) {
+      return 'Must be at least 3 characters';
+    }
+    if (control?.hasError('pattern')) {
+      return 'Invalid format.';
+    }
+    
+    return '';
   }
   
   
