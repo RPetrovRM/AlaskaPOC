@@ -5,25 +5,28 @@
         <img class="topLevelNavigationChild" alt="" src="/Star 7.png" />
         <img class="topLevelNavigationItem" alt="" src="/Star 8.png" />
         <img class="topLevelNavigationInner" alt="" src="/Star 9.png" />
-       <img class="listIcon" alt="" src="/List.png" onkeypress="onListIconClick()" />
+       <img class="listIcon" alt="" src="/List.png" (click)="onListIconClick()" />
               <div class="topLevelTabs">
             <div class="sydneyHoelter">Sydney Hoelter</div>
         </div>
     </div>
     <div class="collapsedPanel"  [ngClass]="{'decreaseWidth': closeClicked}">
-        <div class="blueSeclection"></div>
-        <div class="application">Application</div>
-        <div class="home">Home</div>
-        <div class="notices">Notices</div>
-        <div class="dataCollection">Data Collection</div>
-        <div class="eligibility">Eligibility</div>
-        <div class="tasks">Tasks</div>
-        <div class="unifiedSearch">Unified Search</div>
-        <div class="automatedRenewal">Automated Renewal</div>
-        <div class="current">Current</div>
-        <div class="ilinx">ILINX</div>
-        <div class="ievs">IEVS</div>
-        <div class="admin">Admin</div>
+        <div [ngStyle]="noDisplay">
+            <div class="blueSeclection"></div>
+            <div class="application">Application</div>
+            <div class="home">Home</div>
+            <div class="notices">Notices</div>
+            <div class="dataCollection">Data Collection</div>
+            <div class="eligibility">Eligibility</div>
+            <div class="tasks">Tasks</div>
+            <div class="unifiedSearch">Unified Search</div>
+            <div class="automatedRenewal">Automated Renewal</div>
+            <div class="current">Current</div>
+            <div class="ilinx">ILINX</div>
+            <div class="ievs">IEVS</div>
+            <div class="admin">Admin</div>
+        </div>
+
         <img class="appRegIcon" alt="" src="App Reg.png" />
         <img class="dataCollectionIcon" alt="" src="Data Collection.png" />
         <img class="adminIcon" alt="" src="Admin.png" />
