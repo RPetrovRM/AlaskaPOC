@@ -1,0 +1,29 @@
+export class Applicants {
+   public appNumber: number = 0;
+   public firstName: string = '';
+   public middleName: string = '';
+   public lastName: string = '';
+   public street1: string = '';
+   public street2?: string = '';
+   public city: string = '';
+   public state: string = '';
+   public zip: string = '';
+   public country: string = '';
+   public phoneNumber: string = '';
+   public phoneType: string = '';
+   public altPhoneNumber?: string = '';
+   public altPhoneType?: string = '';
+   public email: string = '';
+   public id: string = '';
+   public lastUpdated: string = '';
+   public dateOfBirth: string = '';
+   public appType: string = '';
+   public programType: string = '';
+   public office: string = '';
+   public appDate: string = '';
+   public additionalHouseholdMembers: boolean = false;
+   public suffix?: string = '';
+   public gender: string = '';
+   public title: string = '';
+   public birthLastName: string = '';
+}

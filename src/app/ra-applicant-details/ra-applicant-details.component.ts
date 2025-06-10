@@ -1,16 +1,17 @@
 import { Component, inject,signal, DestroyRef } from '@angular/core';
-import { FormsModule, NgForm,  FormBuilder, FormGroupDirective, Validators, ValidatorFn, ReactiveFormsModule, FormGroup } from '@angular/forms';
+import { FormsModule, FormBuilder,  Validators,  ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import moment from 'moment';
-import {ErrorStateMatcher, MatOptionModule} from '@angular/material/core';
+import { MatOptionModule} from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatStepper, MatStepperModule, MatStepperNext} from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
 import { CommonModule, NgClass, NgFor, NgIf } from '@angular/common';
-  import { type Applicant } from '../application-registration/applicant.model';
+  import { type Applicant, States} from '../application-registration/applicant.model';
   import { RegisterService } from '../services/register.service';
 import { pluck } from 'rxjs';
+import { Applicants } from './applicantclass.model';
 
 @Component({
   selector: 'app-ra-applicant-details',
@@ -25,7 +26,7 @@ export class RaApplicantDetailsComponent  {
   private registerService = inject(RegisterService);  
   private destroyRef = inject(DestroyRef);
   date: Date = new Date();
-    searchPageDate: string =moment(this.date).format('MMMM DD YYYY hh:mm A');    
+    searchPageDate: string =moment(this.date).format('MM DD YYYY hh:mm A');    
   private _formBuilder = inject(FormBuilder);
   applicantOn = signal(true);
   primaryClicked = signal(false);
@@ -33,20 +34,23 @@ export class RaApplicantDetailsComponent  {
   householdClicked = signal(false);  
   finalizeClicked = signal(false);  
   closeClicked = false;
-  successfulSubmission = false;
-  
+  successfulSubmission = false;  
+  states = States;
+
    suffixes = [{value: 'II'}, {value: 'Jr'}, {value: 'I'}, 
       {value: 'ESQ'}, {value: 'III'}, {value: 'IV'}, {value: 'Sr'}];
- 
+
   noDisplay  = {
     'display':'block'
 };
+   
 
   appDetailsGroup= this._formBuilder.group({ 
     applicationType: [''],
     programType: [''],
-    applicationDate: [''] ,
-    id: [''],  
+    applicationDate: [''],
+    id: [''],
+    appNumber: [''] 
   });
 
    primaryIndividualGroup= this._formBuilder.group({ 
@@ -57,7 +61,7 @@ export class RaApplicantDetailsComponent  {
     gender: ['', Validators.required],    
     suffix: [''],
     dateOfBirth: ['', Validators.required],
-    lastNameAtBirth: [''],    
+    lastNameAtBirth: ['']    
   });
   
    contactGroup= this._formBuilder.group({ 
@@ -71,14 +75,14 @@ export class RaApplicantDetailsComponent  {
     phoneType: [''],   
     altPhoneNumber: [''],
     altPhoneType: [''], 
-    email: [''],   
+    email: ['']
   });
 
   householdMembersGroup= this._formBuilder.group({
-    householdMembers: ['', Validators.required], 
+    householdMembers: ['', Validators.required]
   });
   finalizeGroup= this._formBuilder.group({
-    office: ['', Validators.required], 
+    office: ['', Validators.required]
   });
 
   updateNavSelect(){
@@ -88,25 +92,25 @@ export class RaApplicantDetailsComponent  {
     }
     this.applicantOn.set(false);
     this.primaryClicked.set(true);
+
  const registerForm = this.appDetailsGroup.value as Applicant    
-   // console.log(registerForm);
-         if (registerForm.appDate !== null){                    
-                let returnData = this.registerService.saveApplicant(registerForm);
+    console.log(registerForm);
+    registerForm.appDate = ''; //this.searchPageDate;  //moment(registerForm.appDate).format('YYYY-MM-DD');    
+                               
+                 let returnData = this.registerService.saveApplicant(registerForm);
     
                 let responseData = returnData
-                .pipe(pluck("status"))
-                .subscribe((r: string) => {   
-                  console.log(r);       
-                 
+                .pipe(pluck("applicant"))
+                .subscribe((r: Applicant) => {   
+                  console.log(r); 
                 });
     
                 this.destroyRef.onDestroy(() => {
                   responseData.unsubscribe();
-                });
-          }
+                });       
     
-
   }
+
    updateNavSelect1(){
     if (this.primaryIndividualGroup.invalid) {
       this.primaryIndividualGroup.markAllAsTouched();
@@ -115,25 +119,27 @@ export class RaApplicantDetailsComponent  {
     this.primaryClicked.set(false);
     this.contactClicked.set(true);
 
-     const registerForm = this.primaryIndividualGroup.value as Applicant    
-   // console.log(registerForm);
+     const registerForm = this.primaryIndividualGroup.value as Applicant;
+    
          if (registerForm.firstName !== '' ||
-          registerForm.lastName !== ''){                    
-                let returnData = this.registerService.saveApplicant(registerForm);
+          registerForm.lastName !== ''){          
+              this.updateRegisterFormWithAppDetails(registerForm);
+              registerForm.dateOfBirth = moment(registerForm.dateOfBirth).format('MM-DD-YYYY hh:mm A'); 
+                let returnData2 = this.registerService.saveApplicant(registerForm);
     
-                let responseData = returnData
-                .pipe(pluck("status"))
-                .subscribe((r: string) => {   
-                  console.log(r);       
-                  
-                });
-    
-                this.destroyRef.onDestroy(() => {
-                  responseData.unsubscribe();
-                });
+                let responseData2 = returnData2
+                .pipe(pluck("applicant"))
+                .subscribe((r: Applicant) => {   
+                  console.log(r);   
+                });    
+                   this.destroyRef.onDestroy(() => {
+                  responseData2.unsubscribe();
+                });   
+           
           }
     
   }
+
      updateNavSelect2(){
       if (this.contactGroup.invalid) {
       this.contactGroup.markAllAsTouched();
@@ -144,25 +150,27 @@ export class RaApplicantDetailsComponent  {
 
      const registerForm = this.contactGroup.value as Applicant    
    // console.log(registerForm);
-         if (registerForm.street1 !== '' ){                    
-                let returnData = this.registerService.saveApplicant(registerForm);
+         if (registerForm.street1 !== '' ){    
+            this.updateRegisterFormWithAppDetails(registerForm);
+            this.updateRegisterFormWithPrimaryDetails(registerForm);                          
+                let returnData1 = this.registerService.saveApplicant(registerForm);
     
-                let responseData = returnData
-                .pipe(pluck("status"))
-                .subscribe((r: string) => {   
-                  console.log(r);       
-                
+                let responseData1 = returnData1
+                .pipe(pluck("applicant"))
+                .subscribe((r: any) => {   
+                  console.log(r); 
                 });
-    
-                this.destroyRef.onDestroy(() => {
-                  responseData.unsubscribe();
-                });
+                   this.destroyRef.onDestroy(() => {
+                  responseData1.unsubscribe();
+                });   
           }
     
   }
+
      updateNavSelect3(){
       if (this.householdMembersGroup.invalid) {
       this.householdMembersGroup.markAllAsTouched();
+      
       return;
     }
     this.householdClicked.set(false);
@@ -170,88 +178,119 @@ export class RaApplicantDetailsComponent  {
     
      const registerForm = this.householdMembersGroup.value as Applicant    
    // console.log(registerForm);
-         if (registerForm.additionalHouseholdMembers !== null){                    
-                let returnData = this.registerService.saveApplicant(registerForm);
+         if (registerForm.additionalHouseholdMembers !== null){     
+                          this.updateRegisterFormWithAppDetails(registerForm);
+                this.updateRegisterFormWithPrimaryDetails(registerForm);
+                this.updateRegisterFormWithContactDetails(registerForm);
+                let returnDataa = this.registerService.saveApplicant(registerForm);
     
-                let responseData = returnData
-                .pipe(pluck("status"))
-                .subscribe((r: string) => {   
+                let responseDataa = returnDataa
+                .pipe(pluck("applicant"))
+                .subscribe((r: any) => {   
                   console.log(r); 
                 });
     
                 this.destroyRef.onDestroy(() => {
-                  responseData.unsubscribe();
+                  responseDataa.unsubscribe();
                 });
           }
     
   }
 
 
-ngOnInit(): void {   
-    const applicant = history.state['applicant'];
-   // console.log(applicant); 
-    const data = JSON.parse(applicant) as Applicant;
-    
-    if (data.id !== undefined){   
-      // console.log(data);
-      const birthDate = new Date(data.dateOfBirth);
-      const birthDateFormatted = moment(birthDate).format('yyyy-MM-DD');
-      this.primaryIndividualGroup.setValue({
-        firstName: data.firstName,
-        lastName: data.lastName,
-        middleName: data.middleName,
-        title: data.title,
-        gender: data.gender,
-        suffix: data.suffix || '',
-        dateOfBirth: birthDateFormatted,
-        lastNameAtBirth: data.birthLastName
-      });
-
-      const dateApp = new Date(data.appDate);
-      const dateAppFormatted = moment(dateApp).format('yyyy-MM-DD');
-    this.appDetailsGroup= this._formBuilder.group({ 
-      id: data.id?.toString(),
-      applicationType: data.appType,
-      programType:data.programType,
-      applicationDate: dateAppFormatted
-    });
-
-        this.contactGroup.setValue({
-          street1: data.street1 || '',
-          street2: data.street2 || '',
-          city: data.city || '',
-          state: data.state || '',
-          zip: data.zip || '',
-          country: data.country || '',
-          phoneNumber: data.phoneNumber || '',
-          phoneType: data.phoneType || '',
-          altPhoneNumber: data.altPhoneNumber || '',
-          altPhoneType: data.altPhoneType || '',
-          email: data.email || ''
-        });
-        this.householdMembersGroup.setValue({
-          householdMembers: data.additionalHouseholdMembers === true? 'Y' : 'N'
-        });
-        this.finalizeGroup.setValue({
-          office: data.office || 'Juneau'
-        });
-
-      }
-}
+ngOnInit(): void {  
+  let applicant = JSON.parse(history.state['applicant']) as Applicants;
   
- // onSubmit(form: NgForm) {
- onSubmit(): void{
+  if (applicant.appNumber.toString() === "" ) {        
+   
+  let data: Applicants = new Applicants();
+     const registerForm = this.appDetailsGroup.value as Applicant   
+      let returnData = this.registerService.saveApplicant(registerForm)
+    
+                let responseData = returnData
+                .pipe(pluck("applicant"))
+                .subscribe((r: Applicant) => {   
+                  console.log(r);                   
+                  let applicant = JSON.stringify(r);
+                   data = JSON.parse(applicant) as Applicants;
+                      this.loadData(data);
+                });
+  }else{
+    this.loadData(applicant as Applicants);
+  } 
+
+   
+}
+
+loadData(data: Applicants): void { 
+   if (data.id !== undefined){   
+                // console.log(data);     
+                const birthDate = new Date(data.dateOfBirth);
+                const birthDateFormatted = moment(birthDate).format('yyyy-MM-DD');
+                this.primaryIndividualGroup.setValue({
+                  firstName: data.firstName,
+                  lastName: data.lastName,
+                  middleName: data.middleName,
+                  title: data.title,
+                  gender: data.gender,
+                  suffix: data.suffix || '',
+                  dateOfBirth: birthDateFormatted,
+                  lastNameAtBirth: data.birthLastName,
+                
+                });
+                
+                const dateApp = new Date(data.appDate);
+                let dateAppFormatted = moment(dateApp).format('yyyy-MM-DD');
+                if (dateAppFormatted === '1969-12-31') 
+                  dateAppFormatted = moment(new Date()).format('yyyy-MM-DD');
+
+                this.appDetailsGroup= this._formBuilder.group({       
+                  applicationType: data.appType,
+                  programType:data.programType,
+                  applicationDate: dateAppFormatted,
+                  id: data.id.toString(),
+                  appNumber: data.appNumber.toString()
+                });
+                
+                  this.contactGroup.setValue({
+                    street1: data.street1 || '',
+                    street2: data.street2 || '',
+                    city: data.city || '',
+                    state: data.state || '',
+                    zip: data.zip || '',
+                    country: data.country || '',
+                    phoneNumber: data.phoneNumber || '',
+                    phoneType: data.phoneType || '',
+                    altPhoneNumber: data.altPhoneNumber || '',
+                    altPhoneType: data.altPhoneType || '',
+                    email: data.email || ''
+                  
+                  });
+                  this.householdMembersGroup.setValue({
+                    householdMembers: data.additionalHouseholdMembers === true? 'Y' : 'N',                   
+                  });
+                  this.finalizeGroup.setValue({
+                    office: data.office || 'Juneau'
+                  });
+                }
+   }
+
+  onSubmit(): void{
     if (this.finalizeGroup.invalid) {
       this.finalizeGroup.markAllAsTouched();
       return;
     }
-    // Handle form submission logic her
-    const registerForm = this.finalizeGroup.value as Applicant    
-   // console.log(registerForm);
-         if (registerForm.office !== '' ){                    
-                let returnData = this.registerService.saveApplicant(registerForm);
+
+    const registerFormFinally = this.finalizeGroup.value as Applicant    
+    console.log(registerFormFinally);
+         if (registerFormFinally.office !== '' ){    
+                this.updateRegisterFormWithAppDetails(registerFormFinally);
+                this.updateRegisterFormWithPrimaryDetails(registerFormFinally);
+                this.updateRegisterFormWithContactDetails(registerFormFinally);
+                this.updateRegisterFormWithHouseholdDetails(registerFormFinally);                
+                let returnDataFinalally = this.registerService.saveApplicant(registerFormFinally);
     
-                let responseData = returnData
+                let responseDataFinally = returnDataFinalally
                 .pipe(pluck("status"))
                 .subscribe((r: string) => {   
                   console.log(r);       
@@ -259,7 +298,7 @@ ngOnInit(): void {
                 });
     
                 this.destroyRef.onDestroy(() => {
-                  responseData.unsubscribe();
+                  responseDataFinally.unsubscribe();
                 });
           }
     
@@ -300,5 +339,43 @@ ngOnInit(): void {
     return '';
   }
   
-  
+    updateRegisterFormWithAppDetails(registerForm: Applicant): Applicant {
+         registerForm.id = this.appDetailsGroup.value.id?.toString() ?? '';
+                registerForm.appNumber = this.appDetailsGroup.value.appNumber?.toString() ?? '';
+                registerForm.programType = this.appDetailsGroup.value.programType?.toString() ?? '';
+                registerForm.appType = this.appDetailsGroup.value.applicationType?.toString() ?? '';
+                registerForm.appDate = this.appDetailsGroup.value.applicationDate?.toString() ?? '';
+                return registerForm;
+  }
+  updateRegisterFormWithPrimaryDetails(registerForm: Applicant): Applicant {
+         registerForm.firstName = this.primaryIndividualGroup.value.firstName?.toString() ?? '';
+         registerForm.lastName = this.primaryIndividualGroup.value.lastName?.toString() ?? '';
+         registerForm.middleName = this.primaryIndividualGroup.value.middleName?.toString() ?? '';
+         registerForm.title = this.primaryIndividualGroup.value.title?.toString() ?? '';
+         registerForm.gender = this.primaryIndividualGroup.value.gender?.toString() ?? '';
+         registerForm.suffix = this.primaryIndividualGroup.value.suffix?.toString() ?? '';
+         registerForm.dateOfBirth = this.primaryIndividualGroup.value.dateOfBirth?.toString() ?? '';
+         registerForm.birthLastName = this.primaryIndividualGroup.value.lastNameAtBirth?.toString() ?? '';
+         return registerForm;
+  }
+
+  updateRegisterFormWithContactDetails(registerForm: Applicant): Applicant   {
+         registerForm.street1 = this.contactGroup.value.street1?.toString() ?? '';
+                registerForm.street2 = this.contactGroup.value.street2?.toString() ?? '';
+                registerForm.city = this.contactGroup.value.city?.toString() ?? '';
+                registerForm.state = this.contactGroup.value.state?.toString() ?? '';
+                registerForm.zip = this.contactGroup.value.zip?.toString() ?? '';
+                registerForm.country = this.contactGroup.value.country?.toString() ?? '';
+                registerForm.phoneNumber = this.contactGroup.value.phoneNumber?.toString() ?? '';
+                registerForm.phoneType = this.contactGroup.value.phoneType?.toString() ?? '';
+                registerForm.altPhoneNumber = this.contactGroup.value.altPhoneNumber?.toString() ?? '';
+                registerForm.altPhoneType = this.contactGroup.value.altPhoneType?.toString() ?? '';
+                registerForm.email = this.contactGroup.value.email?.toString() ?? '';
+                return registerForm;
+  }
+
+  updateRegisterFormWithHouseholdDetails(registerForm: Applicant): Applicant {
+         registerForm.additionalHouseholdMembers = this.householdMembersGroup.value.householdMembers === 'Y';
+         return registerForm;
+  }
 }
