@@ -25,16 +25,14 @@ export class ApplicationRegistrationComponent {
   closeClicked = false;
   private destroyRef = inject(DestroyRef);
  private emptyApplicant: Applicant[] = [];
+ states = [];
 
     noDisplay  = {
     'display':'block'
 };
 
   sendToRegisterApplication(applicant: Applicant[]) {   
-    //sends as parameters
-    //  this.router.navigate(['/app-ra-applicant-details', { applicant: JSON.stringify(applicant) }], {
-    //   replaceUrl: true,
-    // });
+
     this.router.navigate(['/app-ra-applicant-details'],  { state: { applicant: JSON.stringify(applicant) } })
   }
 
@@ -46,13 +44,13 @@ export class ApplicationRegistrationComponent {
       searchForm.lastName !== ''){
                 
             let returnData = this.registerService.searchBy(searchForm)
-            .pipe(pluck("applicant"));
+            .pipe(pluck("applicant"))
 
             let responseData = returnData
-            .subscribe((r: Applicant[]) => {   
-              //console.log(r);              
+            .subscribe((r: Applicant[]) => {
+              console.log(r);                        
                 this.sendToRegisterApplication(r);
-               
+
             });
 
             this.destroyRef.onDestroy(() => {
@@ -60,7 +58,7 @@ export class ApplicationRegistrationComponent {
             });
       }
       else
-       {
+       {      
               this.sendToRegisterApplication(this.emptyApplicant); // send empty array if no data found
        }
 }
