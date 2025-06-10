@@ -251,26 +251,25 @@ loadData(data: Applicants): void {
                   id: data.id.toString(),
                   appNumber: data.appNumber.toString()
                 });
-                
                   this.contactGroup.setValue({
-                    street1: data.street1 || '',
-                    street2: data.street2 || '',
-                    city: data.city || '',
-                    state: data.state || '',
-                    zip: data.zip || '',
-                    country: data.country || '',
-                    phoneNumber: data.phoneNumber || '',
-                    phoneType: data.phoneType || '',
-                    altPhoneNumber: data.altPhoneNumber || '',
-                    altPhoneType: data.altPhoneType || '',
-                    email: data.email || ''
+                    street1: data.street1 ?? '',
+                    street2: data.street2 ?? '',
+                    city: data.city ?? '',
+                    state: data.state ?? '',
+                    zip: data.zip ?? '',
+                    country: data.country ?? '',
+                    phoneNumber: data.phoneNumber ?? '',
+                    phoneType: data.phoneType ?? '',
+                    altPhoneNumber: data.altPhoneNumber ?? '',
+                    altPhoneType: data.altPhoneType ?? '',
+                    email: data.email ?? ''
                   
                   });
                   this.householdMembersGroup.setValue({
                     householdMembers: data.additionalHouseholdMembers === true? 'Y' : 'N',                   
                   });
                   this.finalizeGroup.setValue({
-                    office: data.office || 'Juneau'
+                    office: data.office ?? 'Juneau'
                   });
                 }
    }
