@@ -11,7 +11,6 @@ import { CommonModule, NgClass, NgFor, NgIf } from '@angular/common';
   import { type Applicant, States} from '../application-registration/applicant.model';
   import { RegisterService } from '../services/register.service';
 import { pluck } from 'rxjs';
-import { Applicants } from './applicantclass.model';
 
 @Component({
   selector: 'app-ra-applicant-details',
@@ -94,15 +93,19 @@ export class RaApplicantDetailsComponent  {
     this.primaryClicked.set(true);
 
  const registerForm = this.appDetailsGroup.value as Applicant    
-    console.log(registerForm);
+ 
     registerForm.appDate = ''; //this.searchPageDate;  //moment(registerForm.appDate).format('YYYY-MM-DD');    
                                
                  let returnData = this.registerService.saveApplicant(registerForm);
-    
+  
                 let responseData = returnData
                 .pipe(pluck("applicant"))
                 .subscribe((r: Applicant) => {   
-                  console.log(r); 
+                   
+                console.log(r);
+                let applicant = JSON.stringify(r);
+                   let data = JSON.parse(applicant) as Applicant;
+                      this.loadData(data);
                 });
     
                 this.destroyRef.onDestroy(() => {
@@ -124,6 +127,7 @@ export class RaApplicantDetailsComponent  {
          if (registerForm.firstName !== '' ||
           registerForm.lastName !== ''){          
               this.updateRegisterFormWithAppDetails(registerForm);
+            
               registerForm.dateOfBirth = moment(registerForm.dateOfBirth).format('MM-DD-YYYY hh:mm A'); 
                 let returnData2 = this.registerService.saveApplicant(registerForm);
     
@@ -199,11 +203,10 @@ export class RaApplicantDetailsComponent  {
 
 
 ngOnInit(): void {  
-  let applicant = JSON.parse(history.state['applicant']) as Applicants;
+  let applicant = JSON.parse(history.state['applicant']) as Applicant;
   
-  if (applicant.appNumber.toString() === "" ) {        
-   
-  let data: Applicants = new Applicants();
+  if (applicant.appNumber !== undefined && applicant.appNumber.toString() === "" ) {        
+  
      const registerForm = this.appDetailsGroup.value as Applicant   
       let returnData = this.registerService.saveApplicant(registerForm)
     
@@ -212,17 +215,17 @@ ngOnInit(): void {
                 .subscribe((r: Applicant) => {   
                   console.log(r);                   
                   let applicant = JSON.stringify(r);
-                   data = JSON.parse(applicant) as Applicants;
+                   let data = JSON.parse(applicant) as Applicant;
                       this.loadData(data);
                 });
   }else{
-    this.loadData(applicant as Applicants);
+    this.loadData(applicant as Applicant);
   } 
 
    
 }
 
-loadData(data: Applicants): void { 
+loadData(data: Applicant): void { 
    if (data.id !== undefined){   
                 // console.log(data);     
                 const birthDate = new Date(data.dateOfBirth);
