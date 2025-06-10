@@ -1,4 +1,4 @@
-export class Applicant {
+export class Applicants {
    public appNumber: number = 0;
    public firstName: string = '';
    public middleName: string = '';

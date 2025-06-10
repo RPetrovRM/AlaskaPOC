@@ -74,6 +74,7 @@
                  <div class="home1">Applicant Details</div> 
     <div class="main">
         <input type="hidden" for="id" id="id" name="id" formControlName="id" />
+          <input type="hidden" for="appNumber" id="appNumber" name="appNumber" formControlName="appNumber" />
         <div class="inputFieldBase">
             <div class="inputWithLabel">
                 <div >Application Type</div>
@@ -382,9 +383,14 @@
             <div class="inputFieldLarge4C">
                 <div class="inputFieldBase2">
                     <div class="inputWithLabel2">
-                        <div class="label2">State<img class="requiredIcon" alt="" src="Required.png" /></div>
+                        <div class="label2">State &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="requiredIcon" alt="" src="Required.png" /></div>
                           <div class="input">
-                      <input for="state" class="noBorderInputs" type="text" id="state" name="state" formControlName="state" />
+                         <mat-select formControlName="state">
+                            <mat-option value="" disabled selected>Select an option</mat-option>
+                            <mat-option *ngFor="let state of states" [value]="state.code">
+                                 {{ state.name }}
+                            </mat-option>
+                        </mat-select>
                           </div>
                           <div *ngIf="contactGroup.get('state')?.invalid && (contactGroup.get('state')?.touched || contactGroup.get('state')?.dirty)" class="error-message">
                             {{ getErrorMessage('state', contactGroup) }}
