@@ -1,5 +1,5 @@
 import { Component, inject,signal, DestroyRef } from '@angular/core';
-import { FormsModule, NgForm,  FormBuilder, FormGroupDirective, Validators, ValidatorFn, ReactiveFormsModule, FormGroup } from '@angular/forms';
+import { FormsModule, FormBuilder,  Validators,  ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import moment from 'moment';
 import { MatOptionModule} from '@angular/material/core';
@@ -95,8 +95,7 @@ export class RaApplicantDetailsComponent  {
 
  const registerForm = this.appDetailsGroup.value as Applicant    
     console.log(registerForm);
-                registerForm.id = this.appDetailsGroup.value.id?.toString() ?? '';
-                registerForm.appNumber = this.appDetailsGroup.value.appNumber?.toString() ?? '';                   
+                               
                  let returnData = this.registerService.saveApplicant(registerForm);
     
                 let responseData = returnData
@@ -198,13 +197,11 @@ export class RaApplicantDetailsComponent  {
 
 
 ngOnInit(): void {  
-  let applicant = history.state['applicant'];
-  let data: Applicants = new Applicants();
+  let applicant = JSON.parse(history.state['applicant']) as Applicants;
   
-  if (applicant.appNumber !== "" && applicant.appNumber !== undefined) {            
-           data = JSON.parse(applicant) as Applicants;
-  }            
-  else {
+  if (applicant.appNumber.toString() === "" ) {        
+   
+  let data: Applicants = new Applicants();
      const registerForm = this.appDetailsGroup.value as Applicant   
       let returnData = this.registerService.saveApplicant(registerForm)
     
@@ -212,10 +209,21 @@ ngOnInit(): void {
                 .pipe(pluck("applicant"))
                 .subscribe((r: Applicant) => {   
                   console.log(r);                   
-                   applicant = JSON.stringify(r);
+                  let applicant = JSON.stringify(r);
                    data = JSON.parse(applicant) as Applicants;
-                      
-              if (data.id !== undefined){   
+                      this.loadData(data);
+                });
+  }else{
+    // console.log(applicant);
+    this.loadData(applicant as Applicants);
+    // console.log(this.appDetailsGroup.value);
+  } 
+
+   
+}
+
+loadData(data: Applicants): void { 
+   if (data.id !== undefined){   
                 // console.log(data);     
                 const birthDate = new Date(data.dateOfBirth);
                 const birthDateFormatted = moment(birthDate).format('yyyy-MM-DD');
@@ -230,21 +238,20 @@ ngOnInit(): void {
                   lastNameAtBirth: data.birthLastName,
                 
                 });
-
+                
                 const dateApp = new Date(data.appDate);
                 let dateAppFormatted = moment(dateApp).format('yyyy-MM-DD');
                 if (dateAppFormatted === '1969-12-31') 
                   dateAppFormatted = moment(new Date()).format('yyyy-MM-DD');
 
-              this.appDetailsGroup= this._formBuilder.group({       
-                applicationType: data.appType,
-                programType:data.programType,
-                applicationDate: dateAppFormatted,
-                id: data.id.toString(),
-                appNumber: data.appNumber.toString()
-              });
-              console.log(this.appDetailsGroup.value);
-
+                this.appDetailsGroup= this._formBuilder.group({       
+                  applicationType: data.appType,
+                  programType:data.programType,
+                  applicationDate: dateAppFormatted,
+                  id: data.id.toString(),
+                  appNumber: data.appNumber.toString()
+                });
+                
                   this.contactGroup.setValue({
                     street1: data.street1 || '',
                     street2: data.street2 || '',
@@ -266,22 +273,14 @@ ngOnInit(): void {
                     office: data.office || 'Juneau'
                   });
                 }
-                });
-    
-                this.destroyRef.onDestroy(() => {
-                  responseData.unsubscribe();
-                });
-  } 
+   }
 
-   
-}
-  
- onSubmit(): void{
+  onSubmit(): void{
     if (this.finalizeGroup.invalid) {
       this.finalizeGroup.markAllAsTouched();
       return;
     }
-  
+
     const registerFormFinally = this.finalizeGroup.value as Applicant    
     console.log(registerFormFinally);
          if (registerFormFinally.office !== '' ){    
