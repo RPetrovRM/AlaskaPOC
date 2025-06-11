@@ -79,9 +79,10 @@
             <div class="inputWithLabel">
                 <div >Application Type</div>
                 <div class="input">
-                    <!-- <div class="content"></div> -->
-                      <input for="applicationType" class="noBorderInputs" type="text" id="applicationType" name="applicationType" formControlName="applicationType" />
-                   
+                       <mat-select formControlName="applicationType">
+                            <mat-option value="" disabled selected>Select an option</mat-option>
+                            <mat-option *ngFor="let type of appTypes" [value]="type.value">{{ type.value }}</mat-option>                       
+                    </mat-select>
                 </div>
             </div>
         </div>
@@ -91,9 +92,11 @@
             <div class="inputWithLabel">
                 <div >Program Type</div>
                 <div class="input">
-                    <!-- <div class="content"></div> -->
-                      <input for="programType" class="noBorderInputs" type="text" id="programType" name="programType" formControlName="programType" />
-                   
+                    <mat-select formControlName="programType">
+                        <mat-option value="" disabled selected>Select an option</mat-option>
+
+                        <mat-option *ngFor="let prog of programTypes" [value]="prog.value">{{ prog.value }}</mat-option>
+                    </mat-select>
                 </div>
             </div>
         </div>

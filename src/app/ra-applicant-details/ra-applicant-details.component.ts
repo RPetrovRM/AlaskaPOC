@@ -39,6 +39,10 @@ export class RaApplicantDetailsComponent  {
    suffixes = [{value: 'II'}, {value: 'Jr'}, {value: 'I'}, 
       {value: 'ESQ'}, {value: 'III'}, {value: 'IV'}, {value: 'Sr'}];
 
+  appTypes = [{value: 'applicationType1'}, {value: 'applicationType2'}, {value: 'New'}];
+
+  programTypes = [{value: 'ProgramType1'}, {value: 'ProgramType2'}];
+
   noDisplay  = {
     'display':'block'
 };
@@ -94,7 +98,7 @@ export class RaApplicantDetailsComponent  {
 
  const registerForm = this.appDetailsGroup.value as Applicant    
  
-    registerForm.appDate = ''; //this.searchPageDate;  //moment(registerForm.appDate).format('YYYY-MM-DD');    
+    registerForm.appDate = '';  
                                
                  let returnData = this.registerService.saveApplicant(registerForm);
   
@@ -103,9 +107,11 @@ export class RaApplicantDetailsComponent  {
                 .subscribe((r: Applicant) => {   
                    
                 console.log(r);
+                if(registerForm.appNumber === undefined || registerForm.appNumber.toString() === "" ){
                 let applicant = JSON.stringify(r);
                    let data = JSON.parse(applicant) as Applicant;
                       this.loadData(data);
+                    }
                 });
     
                 this.destroyRef.onDestroy(() => {
@@ -156,9 +162,9 @@ export class RaApplicantDetailsComponent  {
    // console.log(registerForm);
          if (registerForm.street1 !== '' ){    
             this.updateRegisterFormWithAppDetails(registerForm);
-            this.updateRegisterFormWithPrimaryDetails(registerForm);                          
-                let returnData1 = this.registerService.saveApplicant(registerForm);
-    
+            this.updateRegisterFormWithPrimaryDetails(registerForm);   
+            console.log("our form data" + JSON.stringify(registerForm));                       
+                let returnData1 = this.registerService.saveApplicant(registerForm);    
                 let responseData1 = returnData1
                 .pipe(pluck("applicant"))
                 .subscribe((r: any) => {   
@@ -185,7 +191,7 @@ export class RaApplicantDetailsComponent  {
          if (registerForm.additionalHouseholdMembers !== null){     
                           this.updateRegisterFormWithAppDetails(registerForm);
                 this.updateRegisterFormWithPrimaryDetails(registerForm);
-                this.updateRegisterFormWithContactDetails(registerForm);
+                this.updateRegisterFormWithContactDetails(registerForm);     
                 let returnDataa = this.registerService.saveApplicant(registerForm);
     
                 let responseDataa = returnDataa
@@ -218,6 +224,10 @@ ngOnInit(): void {
                    let data = JSON.parse(applicant) as Applicant;
                       this.loadData(data);
                 });
+
+                this.destroyRef.onDestroy(() => {
+                  responseData.unsubscribe();
+                });
   }else{
     this.loadData(applicant as Applicant);
   } 
@@ -248,7 +258,7 @@ loadData(data: Applicant): void {
                   dateAppFormatted = moment(new Date()).format('yyyy-MM-DD');
 
                 this.appDetailsGroup= this._formBuilder.group({       
-                  applicationType: data.appType,
+                  applicationType: data.applicationType,
                   programType:data.programType,
                   applicationDate: dateAppFormatted,
                   id: data.id.toString(),
@@ -261,10 +271,10 @@ loadData(data: Applicant): void {
                     state: data.state ?? '',
                     zip: data.zip ?? '',
                     country: data.country ?? '',
-                    phoneNumber: data.phoneNumber ?? '',
-                    phoneType: data.phoneType ?? '',
-                    altPhoneNumber: data.altPhoneNumber ?? '',
-                    altPhoneType: data.altPhoneType ?? '',
+                    phoneNumber: data.primaryPhone ?? '',
+                    phoneType: data.primaryPhoneType ?? '',
+                    altPhoneNumber: data.secondaryPhone ?? '',
+                    altPhoneType: data.secondaryPhoneType ?? '',
                     email: data.email ?? ''
                   
                   });
@@ -345,7 +355,7 @@ loadData(data: Applicant): void {
          registerForm.id = this.appDetailsGroup.value.id?.toString() ?? '';
                 registerForm.appNumber = this.appDetailsGroup.value.appNumber?.toString() ?? '';
                 registerForm.programType = this.appDetailsGroup.value.programType?.toString() ?? '';
-                registerForm.appType = this.appDetailsGroup.value.applicationType?.toString() ?? '';
+                registerForm.applicationType = this.appDetailsGroup.value.applicationType?.toString() ?? '';
                 registerForm.appDate = this.appDetailsGroup.value.applicationDate?.toString() ?? '';
                 return registerForm;
   }
@@ -368,10 +378,10 @@ loadData(data: Applicant): void {
                 registerForm.state = this.contactGroup.value.state?.toString() ?? '';
                 registerForm.zip = this.contactGroup.value.zip?.toString() ?? '';
                 registerForm.country = this.contactGroup.value.country?.toString() ?? '';
-                registerForm.phoneNumber = this.contactGroup.value.phoneNumber?.toString() ?? '';
-                registerForm.phoneType = this.contactGroup.value.phoneType?.toString() ?? '';
-                registerForm.altPhoneNumber = this.contactGroup.value.altPhoneNumber?.toString() ?? '';
-                registerForm.altPhoneType = this.contactGroup.value.altPhoneType?.toString() ?? '';
+                registerForm.primaryPhone = this.contactGroup.value.phoneNumber?.toString() ?? '';
+                registerForm.primaryPhoneType = this.contactGroup.value.phoneType?.toString() ?? '';
+                registerForm.secondaryPhone = this.contactGroup.value.altPhoneNumber?.toString() ?? '';
+                registerForm.secondaryPhone = this.contactGroup.value.altPhoneType?.toString() ?? '';
                 registerForm.email = this.contactGroup.value.email?.toString() ?? '';
                 return registerForm;
   }

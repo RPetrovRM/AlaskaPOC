@@ -9,15 +9,15 @@ export interface Applicant {
     state: string;
     zip: string;
     country: string;
-    phoneNumber: string;
-    phoneType: string;
-    altPhoneNumber?: string;
-    altPhoneType?: string;  
+    primaryPhone: string;
+    primaryPhoneType: string;
+    secondaryPhone?: string;
+    secondaryPhoneType?: string;
     email: string;
     id: string;
     lastUpdated: string;
     dateOfBirth: string;
-    appType: string;
+    applicationType: string;
     programType: string;
     office: string;
     appDate: string;
@@ -32,7 +32,6 @@ export interface Applicant {
     code: string;
     name: string; 
 }
-
 
 export const States : States[] = [
         { name: "Alabama", code: "AL" },
