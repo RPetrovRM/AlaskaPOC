@@ -433,6 +433,13 @@
     justify-content: flex-start;
 }
 
+.label3 {
+    display: block;
+    width: 1800px;
+    font-size: larger;
+    text-wrap: nowrap;
+}
+
 .main {
     position: absolute;
     top: 333px;

@@ -35,6 +35,7 @@ export class RaApplicantDetailsComponent  {
   closeClicked = false;
   successfulSubmission = false;  
   states = States;
+  titleCard = "";
 
    suffixes = [{value: 'II'}, {value: 'Jr'}, {value: 'I'}, 
       {value: 'ESQ'}, {value: 'III'}, {value: 'IV'}, {value: 'Sr'}];
@@ -209,13 +210,16 @@ export class RaApplicantDetailsComponent  {
 
 
 ngOnInit(): void {  
+  // Parsing the search data 
   let applicant = JSON.parse(history.state['applicant']) as Applicant;
   
+  // If applicant number is not undefined and is an empty string, we will create a new applicant
+  // Otherwise, we will load the existing applicant data
   if (applicant.appNumber !== undefined && applicant.appNumber.toString() === "" ) {        
   
      const registerForm = this.appDetailsGroup.value as Applicant   
       let returnData = this.registerService.saveApplicant(registerForm)
-    
+
                 let responseData = returnData
                 .pipe(pluck("applicant"))
                 .subscribe((r: Applicant) => {   
@@ -223,13 +227,17 @@ ngOnInit(): void {
                   let applicant = JSON.stringify(r);
                    let data = JSON.parse(applicant) as Applicant;
                       this.loadData(data);
+                      this.titleCard = "Register Application "
                 });
 
                 this.destroyRef.onDestroy(() => {
                   responseData.unsubscribe();
                 });
+              
+
   }else{
     this.loadData(applicant as Applicant);
+    this.titleCard = "Update Existing Application - App No. " + this.appDetailsGroup.value.appNumber?.toString();
   } 
 
    
