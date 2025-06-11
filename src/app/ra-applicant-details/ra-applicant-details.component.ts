@@ -49,7 +49,7 @@ export class RaApplicantDetailsComponent  {
    
 
   appDetailsGroup= this._formBuilder.group({ 
-    applicationType: [''],
+    appType: [''],
     programType: [''],
     applicationDate: [''],
     id: [''],
@@ -258,7 +258,7 @@ loadData(data: Applicant): void {
                   dateAppFormatted = moment(new Date()).format('yyyy-MM-DD');
 
                 this.appDetailsGroup= this._formBuilder.group({       
-                  applicationType: data.appType,
+                  appType: data.appType,
                   programType:data.programType,
                   applicationDate: dateAppFormatted,
                   id: data.id.toString(),
@@ -355,7 +355,7 @@ loadData(data: Applicant): void {
          registerForm.id = this.appDetailsGroup.value.id?.toString() ?? '';
                 registerForm.appNumber = this.appDetailsGroup.value.appNumber?.toString() ?? '';
                 registerForm.programType = this.appDetailsGroup.value.programType?.toString() ?? '';
-                registerForm.appType = this.appDetailsGroup.value.applicationType?.toString() ?? '';
+                registerForm.appType = this.appDetailsGroup.value.appType?.toString() ?? '';
                 registerForm.appDate = this.appDetailsGroup.value.applicationDate?.toString() ?? '';
                 return registerForm;
   }
