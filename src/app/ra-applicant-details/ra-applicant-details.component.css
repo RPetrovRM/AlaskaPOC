@@ -1073,7 +1073,7 @@
     justify-content: flex-start;
 }
 
-.inputFieldLarge4C {
+.inputFieldLarge5C {
     position: absolute;
     top: 361px;
     left: 806px;
@@ -1119,6 +1119,13 @@
 
 
 .inputFieldBase2C {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.inputFieldBase4C {
     align-self: stretch;
     display: flex;
     flex-direction: column;
@@ -1173,6 +1180,14 @@
     justify-content: flex-start;
 }
 
+.inputWithLabel2 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 6px;
+}
 .noBorderInputs {
     width: 300px;
     border: none  
@@ -1181,3 +1196,8 @@
 .decreaseWidth {
     width: 140px;
 }
+
+ .clicked {
+    background-color: rgb(77, 77, 82);
+    color: white;
+  }

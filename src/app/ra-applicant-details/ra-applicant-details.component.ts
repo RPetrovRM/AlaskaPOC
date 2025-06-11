@@ -47,6 +47,9 @@ export class RaApplicantDetailsComponent  {
     'display':'block'
 };
    
+ toggleColor() {
+    this.successfulSubmission = !this.successfulSubmission;
+  }
 
   appDetailsGroup= this._formBuilder.group({ 
     appType: [''],
