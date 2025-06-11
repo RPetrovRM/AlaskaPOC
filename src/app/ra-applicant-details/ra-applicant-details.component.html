@@ -369,13 +369,12 @@
                     <div class="inputWithLabel2">
                         <div class="label2">Country<img class="requiredIcon" alt="" src="Required.png" /></div>
                           <div class="input">
-                       <input for="country" class="noBorderInputs" type="text" id="country" name="country" formControlName="country" />
-                        <!-- <mat-select formControlName="country">
-                            <mat-option value="" disabled selected>Select an option</mat-option>
-                            <mat-option *ngFor="let type of countries" [value]="type.code">
-                                {{ type.description }}
-                            </mat-option>
-                        </mat-select> -->
+                    
+                        <mat-select formControlName="country">
+                            <mat-option value="" disabled selected >Select an option</mat-option>
+                            <mat-option value="United States">United States</mat-option>
+                            <mat-option value="Australia">Australia</mat-option>
+                        </mat-select>
                           </div>
                           <div *ngIf="contactGroup.get('country')?.invalid && (contactGroup.get('country')?.touched || contactGroup.get('country')?.dirty)" class="error-message">
                             {{ getErrorMessage('country', contactGroup) }}
