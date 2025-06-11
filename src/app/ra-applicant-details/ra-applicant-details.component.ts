@@ -39,7 +39,7 @@ export class RaApplicantDetailsComponent  {
    suffixes = [{value: 'II'}, {value: 'Jr'}, {value: 'I'}, 
       {value: 'ESQ'}, {value: 'III'}, {value: 'IV'}, {value: 'Sr'}];
 
-  appTypes = [{value: 'applicationType1'}, {value: 'applicationType2'}, {value: 'New'}];
+  appTypes = [{value: 'New'}, {value: 'Old'}, {value: 'Renewal'}, {value: 'Reinstate'}, {value: 'Reissue'}];
 
   programTypes = [{value: 'ProgramType1'}, {value: 'ProgramType2'}];
 
@@ -252,13 +252,13 @@ loadData(data: Applicant): void {
                 
                 });
                 
-                const dateApp = new Date(data.appDate);
+                const dateApp = new Date(this.searchPageDate);
                 let dateAppFormatted = moment(dateApp).format('yyyy-MM-DD');
                 if (dateAppFormatted === '1969-12-31') 
                   dateAppFormatted = moment(new Date()).format('yyyy-MM-DD');
 
                 this.appDetailsGroup= this._formBuilder.group({       
-                  applicationType: data.applicationType,
+                  applicationType: data.appType,
                   programType:data.programType,
                   applicationDate: dateAppFormatted,
                   id: data.id.toString(),
@@ -355,7 +355,7 @@ loadData(data: Applicant): void {
          registerForm.id = this.appDetailsGroup.value.id?.toString() ?? '';
                 registerForm.appNumber = this.appDetailsGroup.value.appNumber?.toString() ?? '';
                 registerForm.programType = this.appDetailsGroup.value.programType?.toString() ?? '';
-                registerForm.applicationType = this.appDetailsGroup.value.applicationType?.toString() ?? '';
+                registerForm.appType = this.appDetailsGroup.value.applicationType?.toString() ?? '';
                 registerForm.appDate = this.appDetailsGroup.value.applicationDate?.toString() ?? '';
                 return registerForm;
   }

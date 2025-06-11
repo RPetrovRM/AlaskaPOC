@@ -79,7 +79,7 @@
             <div class="inputWithLabel">
                 <div >Application Type</div>
                 <div class="input">
-                       <mat-select formControlName="applicationType">
+                       <mat-select formControlName="appType">
                             <mat-option value="" disabled selected>Select an option</mat-option>
                             <mat-option *ngFor="let type of appTypes" [value]="type.value">{{ type.value }}</mat-option>                       
                     </mat-select>

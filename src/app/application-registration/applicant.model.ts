@@ -17,7 +17,7 @@ export interface Applicant {
     id: string;
     lastUpdated: string;
     dateOfBirth: string;
-    applicationType: string;
+    appType: string;
     programType: string;
     office: string;
     appDate: string;
