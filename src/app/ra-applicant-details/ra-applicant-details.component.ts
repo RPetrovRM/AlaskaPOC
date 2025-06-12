@@ -79,9 +79,9 @@ export class RaApplicantDetailsComponent  {
     zip: ['', Validators.required],    
     country: ['', Validators.required],
     phoneNumber: [''],
-    phoneType: [''],   
+    phoneType: [''],
     altPhoneNumber: [''],
-    altPhoneType: [''], 
+    altPhoneType: [''],
     email: ['']
   });
 
@@ -111,11 +111,7 @@ export class RaApplicantDetailsComponent  {
                 .subscribe((r: Applicant) => {   
                    
                 console.log(r);
-                if(registerForm.appNumber === undefined || registerForm.appNumber.toString() === "" ){
-                let applicant = JSON.stringify(r);
-                   let data = JSON.parse(applicant) as Applicant;
-                      this.loadData(data);
-                    }
+             
                 });
     
                 this.destroyRef.onDestroy(() => {
@@ -319,6 +315,7 @@ loadData(data: Applicant): void {
                   console.log(r);
                    this.toggleColor();       
                    this.successfulSubmission = true;
+                   this.finalizeGroup.get('office')?.disable();
                 });
     
                 this.destroyRef.onDestroy(() => {
