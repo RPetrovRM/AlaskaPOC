@@ -543,6 +543,12 @@
     justify-content: flex-start;
 }
 
+.label2{
+    display: block;
+    font-size: larger;
+    text-wrap: nowrap;
+}
+
 .label3 {
     position: absolute;
     top: 31px;

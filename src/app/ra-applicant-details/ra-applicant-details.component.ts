@@ -218,7 +218,7 @@ ngOnInit(): void {
   
   // If applicant number is not undefined and is an empty string, we will create a new applicant
   // Otherwise, we will load the existing applicant data
-  if (applicant.appNumber !== undefined && applicant.appNumber.toString() === "" ) {        
+  if (applicant.appNumber == undefined || applicant.appNumber.toString() === '') {        
   
      const registerForm = this.appDetailsGroup.value as Applicant   
       let returnData = this.registerService.saveApplicant(registerForm)
@@ -316,7 +316,8 @@ loadData(data: Applicant): void {
                 let responseDataFinally = returnDataFinalally
                 .pipe(pluck("status"))
                 .subscribe((r: string) => {   
-                  console.log(r);       
+                  console.log(r);
+                   this.toggleColor();       
                    this.successfulSubmission = true;
                 });
     

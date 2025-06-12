@@ -454,7 +454,7 @@
                           @if(successfulSubmission) {
        <div class="label2"> 
         <div style="color: green; font-size: large;" >
-            <p>Application has been successfully submitted!</p>
+            <p>Application has been successfully submitted! Your application number is: {{appDetailsGroup.value.appNumber}}</p>
         </div>
     </div>
      } 
@@ -477,7 +477,7 @@
                 </div>
                   
       <div class="button2">
-            <button type="submit" id="next-button" class="buttonBase2" [ngClass]="{'clicked': successfulSubmission}" mat-button (click)="onSubmit(); toggleColor()" name="submitButton"  [disabled]="this.successfulSubmission" >
+            <button type="submit" id="next-button" class="buttonBase2" [ngClass]="{'clicked': successfulSubmission}" mat-button (click)="onSubmit();" name="submitButton"  [disabled]="this.successfulSubmission" >
                 <span style="color: white;">Submit</span></button>
             </div>
             
