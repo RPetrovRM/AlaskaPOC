@@ -1,0 +1,27 @@
+.arrowrightIcon2:hover {
+    filter: brightness(1.5) drop-shadow(0 0 4px #0078d4); /* Makes the icon brighter and adds a blue glow */
+    cursor: pointer;
+    /* Optionally, you can add a background or border */
+    /* background: #e0f0ff; */
+    /* border-radius: 50%; */
+    /* transition for smooth effect */
+    transition: filter 0.2s, background 0.2s;
+}
+
+.card2:hover {
+    cursor:pointer;
+    transform: scale(1.03); /* Slightly enlarges the card on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for depth */
+    transition: transform 0.2s, box-shadow 0.2s; /* Smooth transition for the hover effect */
+
+}
+
+.sydneyHoelter{
+
+    font-weight: bold;
+    text-decoration: none; /* Removes underline */
+}
+
+.home{
+    font-size: larger;
+}

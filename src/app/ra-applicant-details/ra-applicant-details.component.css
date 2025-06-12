@@ -808,8 +808,10 @@
 }
 
 .noBorderInputs {
-    width: 300px;
-    border: none  
+    width: 100%;
+    border: none;
+    box-sizing: border-box;
+    outline: none;  
 }
 
 
@@ -857,6 +859,16 @@
     align-items: center;
     justify-content: center;
     padding: 10px 18px;
+}
+
+.buttonBase:hover,
+.buttonBase1:hover,
+.buttonBase2:hover,
+.buttonBase3:hover {
+    cursor:pointer;
+    transform: scale(1.05); /* Slightly enlarges the card on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for depth */
+    transition: box-shadow 0.2s;
 }
 
 .button3 {
