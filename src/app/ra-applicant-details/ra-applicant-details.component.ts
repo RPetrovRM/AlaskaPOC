@@ -102,7 +102,7 @@ export class RaApplicantDetailsComponent  {
 
  const registerForm = this.appDetailsGroup.value as Applicant    
  
-    registerForm.appDate = '';  
+    registerForm.appDate =   moment(this.appDetailsGroup.value.applicationDate ?? this.searchPageDate).format('MM-DD-YYYY hh:mm A') ?? '';
                                
                  let returnData = this.registerService.saveApplicant(registerForm);
   
@@ -364,8 +364,9 @@ loadData(data: Applicant): void {
          registerForm.id = this.appDetailsGroup.value.id?.toString() ?? '';
                 registerForm.appNumber = this.appDetailsGroup.value.appNumber?.toString() ?? '';
                 registerForm.programType = this.appDetailsGroup.value.programType?.toString() ?? '';
-                registerForm.appType = this.appDetailsGroup.value.appType?.toString() ?? '';
-                registerForm.appDate = this.appDetailsGroup.value.applicationDate?.toString() ?? '';
+                registerForm.appType = this.appDetailsGroup.value.appType?.toString() ?? '';  
+                if (this.appDetailsGroup.value.applicationDate === null )              
+                      registerForm.appDate = moment(this.appDetailsGroup.value.applicationDate).format('MM-DD-YYYY hh:mm A') ?? '';
                 return registerForm;
   }
   updateRegisterFormWithPrimaryDetails(registerForm: Applicant): Applicant {

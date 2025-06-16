@@ -274,3 +274,7 @@
     color: #181d27;
     font-family: Inter;
 }
+a:link{
+    color: #00367d;
+    text-decoration: none;
+}
