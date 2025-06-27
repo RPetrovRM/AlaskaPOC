@@ -1,3 +1,9 @@
+
+
+body, .appReg2 {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
 .intergratedEligibilitySystem {
     position: absolute;
     top: 1px;
@@ -315,17 +321,14 @@
 
 .vectorIcon {
     position: absolute;
-    height: 1.63%;
-    width: 6.64%;
     top: 4.28%;
     right: 84.65%;
     bottom: 94.09%;
-    left: 8.71%;
+    left: 18px;
     max-width: 100%;
     overflow: hidden;
     max-height: 100%;
 }
-
 .collapsedPanel {
     position: absolute;
     top: 45px;
@@ -553,7 +556,6 @@
     text-align: left;
     font-size: 14px;
     color: #181d27;
-    font-family: Inter;
 }
 .noBorderInputs {
     width: 100%;
@@ -564,4 +566,31 @@
 
 .decreaseWidth {
     width: 140px;
+}
+
+.buttonBase:hover,
+.buttonBase1:hover,
+.buttonBase2:hover,
+.buttonBase3:hover {
+    cursor:pointer;
+    transform: scale(1.05); /* Slightly enlarges the card on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for depth */
+    transition: box-shadow 0.2s;
+}
+
+.alaska-overlay {
+    position: absolute;
+    top: 45px;         /* height of the top bar */
+    left: 241px;       /* width of the sidebar */
+    width: calc(100% - 241px);
+    height: calc(100% - 45px);
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+    opacity: .1; /* Adjust for transparency if needed */
+}
+
+.topLevelNavigationChild{
+    width: 35px;
+    height: 35px;
 }

@@ -1,3 +1,32 @@
+.alaska-overlay {
+    position: absolute;
+    top: 45px;         /* height of the top bar */
+    left: 241px;       /* width of the sidebar */
+    width: calc(100% - 241px);
+    height: calc(100% - 45px);
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+    opacity: .1; /* Adjust for transparency if needed */
+}
+
+body, .appReg {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+::ng-deep .mat-mdc-select,
+::ng-deep .mat-mdc-select-value,
+::ng-deep .mat-mdc-option,
+::ng-deep .mat-mdc-select-panel {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif !important;
+}
+
+/* For the input field */
+input[formcontrolname="dateOfBirth"] {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+
 .intergratedEligibilitySystem {
     position: absolute;
     top: 1px;
@@ -20,12 +49,16 @@
 }
 
 .error-message {
-  min-height: 20px; /* Reserve space for one line of error text */
-  color: red;
-  font-size: 0.9em;
-  margin-top: 4px;
-  margin-bottom: 4px;
-  transition: opacity 0.2s;
+    color: red;
+    font-size: 13px;
+    display: block;
+}
+
+.inputWithLabel,
+.inputFieldBase,
+.input {
+    display: flex;
+    flex-direction: column;
 }
 
 .error-message:empty {
@@ -55,8 +88,8 @@
     position: absolute;
     top: 6px;
     left: 111px;
-    width: 21px;
-    height: 21px;
+    width: 35px;
+    height: 35px;
 }
 
 .topLevelNavigationItem {
@@ -141,7 +174,6 @@
     position: absolute;
     top: 36px;
     left: 49px;
-    font-weight: 600;
     display: flex;
     align-items: center;
     width: 163px;
@@ -345,14 +377,13 @@
     height: 24px;
 }
 
+
 .vectorIcon {
     position: absolute;
-    height: 1.63%;
-    width: 6.64%;
     top: 4.28%;
     right: 84.65%;
     bottom: 94.09%;
-    left: 8.71%;
+    left: 18px;
     max-width: 100%;
     overflow: hidden;
     max-height: 100%;
@@ -804,7 +835,6 @@
     text-align: left;
     font-size: 14px;
     color: #181d27;
-    font-family: Inter;
 }
 
 .noBorderInputs {
@@ -1056,7 +1086,7 @@
 
 .main2C {
     position: absolute;
-    top: 290px;
+    top: 310px;
     left: 283px;
     width: 252px;
     display: flex;
@@ -1067,7 +1097,7 @@
 
 .inputFieldLarge1C {
     position: absolute;
-    top: 361px;
+    top: 390px;
     left: 283px;
     width: 472px;
     display: flex;
@@ -1089,7 +1119,7 @@
 
 .inputFieldLarge3C {
     position: absolute;
-    top: 293px;
+    top: 310px;
     left: 806px;
     width: 472px;
     display: flex;
@@ -1100,7 +1130,7 @@
 
 .inputFieldLarge5C {
     position: absolute;
-    top: 361px;
+    top: 390px;
     left: 806px;
     width: 472px;
     display: flex;

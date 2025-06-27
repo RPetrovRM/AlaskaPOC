@@ -2,9 +2,8 @@
     <div class="topLevelNavigation">
         <div class="intergratedEligibilitySystem">INTEGRATED ELIGIBILITY SYSTEM</div>
         <img class="usercircleIcon" alt="" src="/UserCircle.png" />
-        <img class="topLevelNavigationChild" alt="" src="/Star 7.png" />
-        <img class="topLevelNavigationItem" alt="" src="/Star 8.png" />
-        <img class="topLevelNavigationInner" alt="" src="/Star 9.png" />
+        <img class="topLevelNavigationChild" alt="" src="/DOH Beveled.png" />
+
        <img class="listIcon" alt="" src="/List.png" (click)="onListIconClick()" />
               <div class="topLevelTabs">
             <div class="sydneyHoelter">Sydney Hoelter</div>
@@ -40,7 +39,8 @@
         <img class="eligibilityDeterminationIcon" alt="" src="Eligibility Determination.png" />
         <img class="vectorIcon" alt="" src="Vector.png" />
     </div>
-    
+    <img class="alaska-overlay" src="alaska1.png" alt="Alaska Overlay" />
+
     <div class="card" >
         <div class="label3">{{titleCard}}</div>
         <div class="topNavigation">
@@ -223,7 +223,9 @@
             <div class="main4">
                 <div class="inputFieldBase">
                     <div class="inputWithLabel">
-                        <div class="label2">Gender  <img class="requiredIcon" alt="" src="Required.png" /></div>  
+                        <div class="label2">Gender  <img class="requiredIcon" alt="" src="Required.png" /> <div *ngIf="primaryIndividualGroup.get('gender')?.invalid && (primaryIndividualGroup.get('gender')?.touched || primaryIndividualGroup.get('gender')?.dirty)" class="error-message">
+                            {{ getErrorMessage('gender', primaryIndividualGroup) }}
+                        </div>  </div>  
                         <div class="input">                                              
                         <mat-select formControlName="gender">
                             <mat-option value="" disabled selected >Select an option</mat-option>
@@ -231,9 +233,7 @@
                             <mat-option value="M">Male</mat-option>
                         </mat-select>
                               </div>
-                              <div *ngIf="primaryIndividualGroup.get('gender')?.invalid && (primaryIndividualGroup.get('gender')?.touched || primaryIndividualGroup.get('gender')?.dirty)" class="error-message">
-                            {{ getErrorMessage('gender', primaryIndividualGroup) }}
-                        </div>                      
+                                                  
                     </div>  
                 </div>
             </div>
